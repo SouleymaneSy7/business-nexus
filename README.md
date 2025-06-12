@@ -1,36 +1,116 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Business Nexus
 
-## Getting Started
+**Business Nexus** is a networking platform built to connect **entrepreneurs** and **investors**. This project is part of the developpersHub corporation frontend development internship challenge.
 
-First, run the development server:
+> ⚠️ This README is a living document and will be updated progressively as the project evolves.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+---
+
+## 🎯 Project Goal
+
+Build a full-featured web application where two types of users can:
+
+- Register and log in based on their role (Investor or Entrepreneur)
+- Access a role-specific dashboard
+- Browse public user profiles
+- Send and receive collaboration requests
+- Chat in real-time (simulated or actual)
+
+---
+
+## Tech Stack (Initial Setup)
+
+| Layer              | Tech                             |
+| ------------------ | -------------------------------- |
+| Framework          | Next.js 15 (App Router)          |
+| Language           | TypeScript                       |
+| Styling            | Tailwind CSS + Shadcn/UI         |
+| Authentication     | Supabase Auth                    |
+| Backend / Realtime | Supabase (PostgreSQL + Realtime) |
+| Deployment         | Vercel or Netlify                |
+
+---
+
+## Features (Work in Progress)
+
+- [ ] Project scaffold with folder structure (upcoming)
+- [ ] Authentication with role selection (Investor or Entrepreneur) (upcoming)
+- [ ] Protected routes using Next.js middleware (upcoming)
+- [ ] Role-based dashboards and layouts (upcoming)
+- [ ] Public user profile pages (upcoming)
+- [ ] Real-time chat system using Supabase channels  (upcoming)
+- [ ] Notifications system (upcoming)
+- [ ] Collaboration request management (upcoming)
+- [ ] Enhanced filtering and search (upcoming)
+
+---
+
+## Project Structure
+
+```
+/business-nexus
+├── app/
+│   ├── layout.tsx
+│   ├── page.tsx
+│   ├── login/page.tsx
+│   ├── register/page.tsx
+│   ├── dashboard/
+│   │   ├── investor/page.tsx
+│   │   └── entrepreneur/page.tsx
+│   ├── profile/
+│   │   ├── investor/[id]/page.tsx
+│   │   └── entrepreneur/[id]/page.tsx
+│   └── chat/[userId]/page.tsx
+├── components/
+│   ├── ui/ (Shadcn)
+│   ├── forms/
+│   ├── layout/
+│   └── cards/
+├── lib/
+│   ├── supabase.ts
+│   └── auth.ts
+├── types/
+│   └── index.ts
+├── middleware.ts
+├── tailwind.config.ts
+└── ...
+
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Local Development
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+# Clone and install dependencies
+pnpm install
 
-## Learn More
+# Setup environment variables
+cp .env.example .env.local
 
-To learn more about Next.js, take a look at the following resources:
+# Run dev server
+pnpm run dev
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## Roadmap Highlights
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- [Week 1] Setup + Auth + Basic Layouts
+- [Week 2] Dashboards + Profiles + Requests
+- [Week 3] Real-time Chat + Polish + Demo Prep
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## Contributing & Updating
+
+As the project evolves, we’ll continue updating this README with:
+
+- Database schema changes
+- Feature explanations
+- UI/UX decisions
+- Deployment instructions
+
+Stay tuned ✨
