@@ -1,6 +1,16 @@
-import { config } from 'dotenv';
-import { drizzle } from 'drizzle-orm/neon-http';
+import postgres from "postgres";
+import { config } from "dotenv";
+import { user } from "./schema/auth-schema";
+import { drizzle } from "drizzle-orm/postgres-js";
 
-config({ path: '.env' }); 
+config({ path: ".env" });
 
-export const db = drizzle(process.env.DATABASE_URL!);
+const connectionString = process.env.DATABASE_URL;
+if (!connectionString) throw new Error("DATABASE_URL environment variable is not defined");
+
+// Disable prefetch as it is not supported for "Transaction" pool mode
+const client = postgres(connectionString, { prepare: false });
+export const db = drizzle({ client, casing: "snake_case" });
+
+const allUsers = await db.select().from(user);
+console.log(allUsers);
