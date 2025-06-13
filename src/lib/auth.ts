@@ -4,7 +4,7 @@ import { drizzleAdapter } from "better-auth/adapters/drizzle";
 
 import { authSchema } from "@/db/schema";
 import { db } from "@/db/drizzle";
-import { User } from "@/types";
+import { UserTypes } from "@/types";
 
 export const auth = betterAuth({
   database: drizzleAdapter(db, {
@@ -56,7 +56,7 @@ export const auth = betterAuth({
     user: {
       create: {
         before: async (user) => {
-          if ((user as User).isAgreedToTerms === false) {
+          if ((user as UserTypes).isAgreedToTerms === false) {
             throw new APIError("BAD_REQUEST", {
               message: "User must agree to the Term of service before signing up.",
             });
