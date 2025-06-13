@@ -1,6 +1,6 @@
 export type UserRole = "investor" | "entrepreneur";
 
-export interface User {
+export interface UserTypes {
   id: string;
   email: string;
   name: string;
