@@ -2,7 +2,7 @@ import { APIError, betterAuth } from "better-auth";
 import { nextCookies } from "better-auth/next-js";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
 
-import { authSchema } from "@/db/schema";
+import { authSchema } from "@/db/schema/auth-schema";
 import { db } from "@/db/drizzle";
 import { UserTypes } from "@/types";
 
