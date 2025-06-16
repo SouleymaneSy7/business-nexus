@@ -1,6 +1,6 @@
 import postgres from "postgres";
 import { config } from "dotenv";
-import { user } from "./schema/auth-schema";
+import { users } from "./schema/auth-schema";
 import { drizzle } from "drizzle-orm/postgres-js";
 
 config({ path: ".env" });
@@ -12,5 +12,5 @@ if (!connectionString) throw new Error("DATABASE_URL environment variable is not
 const client = postgres(connectionString, { prepare: false });
 export const db = drizzle({ client, casing: "snake_case" });
 
-const allUsers = await db.select().from(user);
+const allUsers = await db.select().from(users);
 console.log(allUsers);
