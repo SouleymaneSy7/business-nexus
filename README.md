@@ -6,7 +6,7 @@
 
 ---
 
-## 🎯 Project Goal
+## Project Goal
 
 Build a full-featured web application where two types of users can:
 
@@ -20,25 +20,27 @@ Build a full-featured web application where two types of users can:
 
 ## Tech Stack (Initial Setup)
 
-| Layer              | Tech                             |
-| ------------------ | -------------------------------- |
-| Framework          | Next.js 15 (App Router)          |
-| Language           | TypeScript                       |
-| Styling            | Tailwind CSS + Shadcn/UI         |
-| Authentication     | Supabase Auth                    |
-| Backend / Realtime | Supabase (PostgreSQL + Realtime) |
-| Deployment         | Vercel or Netlify                |
+| Layer          | Tech                           |
+| -------------- | ------------------------------ |
+| Framework      | Next.js 15 latest (App Router) |
+| Language       | TypeScript                     |
+| Styling        | Tailwind CSS + Shadcn/UI       |
+| Forms          | React Hook Form + Zod          |
+| Authentication | Better-Auth                    |
+| Database       | Supabase (PostgreSQL)          |
+| ORM            | Drizzle                        |
+| Deployment     | Vercel                         |
 
 ---
 
 ## Features (Work in Progress)
 
-- [ ] Project scaffold with folder structure (upcoming)
+- [x] Project scaffold with folder structure
 - [ ] Authentication with role selection (Investor or Entrepreneur) (upcoming)
 - [ ] Protected routes using Next.js middleware (upcoming)
 - [ ] Role-based dashboards and layouts (upcoming)
 - [ ] Public user profile pages (upcoming)
-- [ ] Real-time chat system using Supabase channels  (upcoming)
+- [ ] Real-time chat system using Supabase channels (upcoming)
 - [ ] Notifications system (upcoming)
 - [ ] Collaboration request management (upcoming)
 - [ ] Enhanced filtering and search (upcoming)
@@ -47,34 +49,46 @@ Build a full-featured web application where two types of users can:
 
 ## Project Structure
 
-```
+```md
 /business-nexus
 ├── app/
-│   ├── layout.tsx
-│   ├── page.tsx
-│   ├── login/page.tsx
-│   ├── register/page.tsx
-│   ├── dashboard/
-│   │   ├── investor/page.tsx
-│   │   └── entrepreneur/page.tsx
-│   ├── profile/
-│   │   ├── investor/[id]/page.tsx
-│   │   └── entrepreneur/[id]/page.tsx
-│   └── chat/[userId]/page.tsx
+│ ├── layout.tsx
+│ ├── page.tsx
+| ├── auth/
+│ │ ├── login/page.tsx
+│ │ └── register/page.tsx│
+│ ├── dashboard/
+│ │ ├── investor/page.tsx
+│ │ └── entrepreneur/page.tsx
+│ ├── profile/
+│ │ ├── investor/[id]/page.tsx
+│ │ └── entrepreneur/[id]/page.tsx
+│ └── chat/[userId]/page.tsx
 ├── components/
-│   ├── ui/ (Shadcn)
-│   ├── forms/
-│   ├── layout/
-│   └── cards/
+│ ├── ui/ (Shadcn)
+│ ├── auth/
+│ ├── layouts/
+│ └── shared/
+├── db/
+│ ├── schema/
+│ │ ├── auth-schema.ts
+│ │ └── data-schema.ts
+│ └── drizzle.ts
+├── hooks/
+│ ├── useAuth.ts
+│ └── useUser.ts
 ├── lib/
-│   ├── supabase.ts
-│   └── auth.ts
+│ ├── auth-client.ts
+│ ├── auth.ts
+│ ├── supabaseClient.ts
+│ └── utils.ts
 ├── types/
-│   └── index.ts
+│ ├── index.ts
+│ └── schemaTypes.ts
 ├── middleware.ts
-├── tailwind.config.ts
+├── drizzle.config.ts
+├── next.config.ts
 └── ...
-
 ```
 
 ---
@@ -84,9 +98,6 @@ Build a full-featured web application where two types of users can:
 ```bash
 # Clone and install dependencies
 pnpm install
-
-# Setup environment variables
-cp .env.example .env.local
 
 # Run dev server
 pnpm run dev
