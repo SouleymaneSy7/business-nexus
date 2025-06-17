@@ -13,7 +13,6 @@ import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@comp
 import { Input } from "@components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Loader2 } from "lucide-react";
-import { signUp } from "@/lib/auth-client";
 import { Alert, AlertDescription } from "@components/ui/alert";
 import {
   Select,
@@ -24,6 +23,7 @@ import {
 } from "@/components/ui/select";
 import { Checkbox } from "@components/ui/checkbox";
 import { Textarea } from "@components/ui/textarea";
+import { auth } from "@/lib/auth";
 
 const registerSchema = z
   .object({
@@ -103,9 +103,13 @@ const RegisterForm = () => {
         isAgreedToTerms: data.terms,
       };
 
-      const result = await signUp.email(signUpData);
+      const result = await auth.api.signInEmail({
+        body: signUpData
+      });
 
-      if (result.error) {
+      console.log(result)
+
+      if (error) {
         setError("Error when creating account");
         return;
       }
@@ -120,140 +124,154 @@ const RegisterForm = () => {
   };
 
   return (
-    <Card className="mx-auto w-full max-w-md">
-      <CardHeader>
-        <CardTitle>Register</CardTitle>
-        <CardDescription>Create your Business Nexus account</CardDescription>
-      </CardHeader>
+    <div className="flex flex-col gap-6">
+      <Card className="mx-auto w-full max-w-md">
+        <CardHeader>
+          <CardTitle>Register</CardTitle>
+          <CardDescription>Create your Business Nexus account</CardDescription>
+        </CardHeader>
 
-      <CardContent>
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-          <div className="space-y-2">
-            <Label htmlFor="name">Full Name</Label>
-            <Input id="name" placeholder="John Doe" {...register("name")} disabled={isLoading} />
-            {errors.name && <p className="text-sm text-red-500">{errors.name.message}</p>}
-          </div>
-
-          <div className="space-y-2">
-            <Label htmlFor="email">Email</Label>
-            <Input
-              id="email"
-              type="email"
-              placeholder="your@email.com"
-              {...register("email")}
-              disabled={isLoading}
-            />
-            {errors.email && <p className="text-sm text-red-500">{errors.email.message}</p>}
-          </div>
-
-          <div className="item-center flex w-full gap-4">
-            <div className="w-1/2 space-y-2">
-              <Label htmlFor="role">I am a</Label>
-              <Select
-                onValueChange={(value) => setValue("role", value as "investor" | "entrepreneur")}
-              >
-                <SelectTrigger>
-                  <SelectValue placeholder="Select your role" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="entrepreneur">Entrepreneur</SelectItem>
-                  <SelectItem value="investor">Investor</SelectItem>
-                </SelectContent>
-              </Select>
-              {errors.role && <p className="text-sm text-red-500">{errors.role.message}</p>}
+        <CardContent>
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+            <div className="space-y-2">
+              <Label htmlFor="name">Full Name</Label>
+              <Input id="name" placeholder="John Doe" {...register("name")} disabled={isLoading} />
+              {errors.name && <p className="text-sm text-red-500">{errors.name.message}</p>}
             </div>
 
-            <div className="w-1/2 space-y-2">
-              <Label htmlFor="company">Company</Label>
+            <div className="space-y-2">
+              <Label htmlFor="email">Email</Label>
               <Input
-                id="company"
-                type="text"
-                placeholder="Company Name"
-                {...register("company")}
+                id="email"
+                type="email"
+                placeholder="your@email.com"
+                {...register("email")}
+                disabled={isLoading}
+              />
+              {errors.email && <p className="text-sm text-red-500">{errors.email.message}</p>}
+            </div>
+
+            <div className="item-center flex w-full gap-4">
+              <div className="w-1/2 space-y-2">
+                <Label htmlFor="role">I am a</Label>
+                <Select
+                  onValueChange={(value) => setValue("role", value as "investor" | "entrepreneur")}
+                >
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select your role" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="entrepreneur">Entrepreneur</SelectItem>
+                    <SelectItem value="investor">Investor</SelectItem>
+                  </SelectContent>
+                </Select>
+                {errors.role && <p className="text-sm text-red-500">{errors.role.message}</p>}
+              </div>
+
+              <div className="w-1/2 space-y-2">
+                <Label htmlFor="company">Company</Label>
+                <Input
+                  id="company"
+                  type="text"
+                  placeholder="Company Name"
+                  {...register("company")}
+                  disabled={isLoading}
+                />
+
+                {errors.company && <p className="text-sm text-red-500">{errors.company.message}</p>}
+              </div>
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="bio">Bio</Label>
+
+              <Textarea
+                placeholder="Your Bio here..."
+                id="bio"
+                {...register("bio")}
                 disabled={isLoading}
               />
 
-              {errors.company && <p className="text-sm text-red-500">{errors.company.message}</p>}
+              {errors.bio && <p className="text-sm text-red-500">{errors.bio.message}</p>}
             </div>
-          </div>
 
-          <div className="space-y-2">
-            <Label htmlFor="bio">Bio</Label>
-
-            <Textarea
-              placeholder="Your Bio here..."
-              id="bio"
-              {...register("bio")}
-              disabled={isLoading}
-            />
-
-            {errors.bio && <p className="text-sm text-red-500">{errors.bio.message}</p>}
-          </div>
-
-          <div className="space-y-2">
-            <Label htmlFor="password">Password</Label>
-            <Input
-              id="password"
-              type="password"
-              placeholder="••••••••"
-              {...register("password")}
-              disabled={isLoading}
-            />
-            {errors.password && <p className="text-sm text-red-500">{errors.password.message}</p>}
-          </div>
-
-          <div className="space-y-2">
-            <Label htmlFor="confirmPassword">Confirm Password</Label>
-            <Input
-              id="confirmPassword"
-              type="password"
-              placeholder="••••••••"
-              {...register("confirmPassword")}
-              disabled={isLoading}
-            />
-            {errors.confirmPassword && (
-              <p className="text-sm text-red-500">{errors.confirmPassword.message}</p>
-            )}
-          </div>
-
-          <div className="space-y-2">
-            <div className="flex items-center gap-2">
-              <Checkbox
-              id="terms"
-              {...register("terms")}
-              onCheckedChange={(checked) => {
-                setValue("terms", checked === true);
-              }}
-              disabled={isLoading}
+            <div className="space-y-2">
+              <Label htmlFor="password">Password</Label>
+              <Input
+                id="password"
+                type="password"
+                placeholder="••••••••"
+                {...register("password")}
+                disabled={isLoading}
               />
-              <Label htmlFor="terms">Accept terms and conditions</Label>
+              {errors.password && <p className="text-sm text-red-500">{errors.password.message}</p>}
             </div>
 
-            {errors.terms && <p className="text-sm text-red-500">{errors.terms.message}</p>}
+            <div className="space-y-2">
+              <Label htmlFor="confirmPassword">Confirm Password</Label>
+              <Input
+                id="confirmPassword"
+                type="password"
+                placeholder="••••••••"
+                {...register("confirmPassword")}
+                disabled={isLoading}
+              />
+              {errors.confirmPassword && (
+                <p className="text-sm text-red-500">{errors.confirmPassword.message}</p>
+              )}
+            </div>
+
+            <div className="space-y-2">
+              <div className="flex items-center gap-2">
+                <Checkbox
+                  id="terms"
+                  {...register("terms")}
+                  onCheckedChange={(checked) => {
+                    setValue("terms", checked === true);
+                  }}
+                  disabled={isLoading}
+                />
+                <Label htmlFor="terms">Accept terms and conditions</Label>
+              </div>
+
+              {errors.terms && <p className="text-sm text-red-500">{errors.terms.message}</p>}
+            </div>
+
+            {error && (
+              <Alert variant="destructive">
+                <AlertDescription>{error}</AlertDescription>
+              </Alert>
+            )}
+
+            <Button type="submit" className="w-full" disabled={isLoading}>
+              {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+              Register
+            </Button>
+          </form>
+
+          <div className="mt-4 text-center">
+            <p className="text-muted-foreground text-sm">
+              Already have an account?{" "}
+              <Link href="/login" className="text-primary hover:underline">
+                Login
+              </Link>
+            </p>
           </div>
+        </CardContent>
+      </Card>
 
-          {error && (
-            <Alert variant="destructive">
-              <AlertDescription>{error}</AlertDescription>
-            </Alert>
-          )}
-
-          <Button type="submit" className="w-full" disabled={isLoading}>
-            {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-            Register
-          </Button>
-        </form>
-
-        <div className="mt-4 text-center">
-          <p className="text-muted-foreground text-sm">
-            Already have an account?{" "}
-            <Link href="/login" className="text-primary hover:underline">
-              Login
-            </Link>
-          </p>
-        </div>
-      </CardContent>
-    </Card>
+      <div className="text-muted-foreground *:[a]:hover:text-primary text-center text-xs text-balance *:[a]:underline *:[a]:underline-offset-4">
+        By clicking continue, you agree to our{" "}
+        <a href="#" className="underline underline-offset-4">
+          Terms of Service
+        </a>{" "}
+        and{" "}
+        <a href="#" className="underline underline-offset-4">
+          Privacy Policy
+        </a>
+        .
+      </div>
+    </div>
   );
 };
 
