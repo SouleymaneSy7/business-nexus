@@ -7,6 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "better-auth-generate": "pnpm dlx @better-auth/cli generate",
+    "better-auth-migrate": "@better-auth/cli migrate",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
     "db:studio": "drizzle-kit studio",
