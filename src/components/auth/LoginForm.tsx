@@ -42,14 +42,17 @@ const LoginForm = ({ className, ...props }: React.ComponentProps<"div">) => {
     setError(null);
 
     try {
-      const result = await signIn.email({
+      const { data: result, error } = await signIn.email({
         email: data.email,
         password: data.password,
       });
 
-      if (result.error) {
+      if (error) {
         setError("Incorrect email or password");
       }
+
+      // Redirect to the dashboard corresponding to the role
+      router.push(`/dashboard/${result?.user.role}`);
     } catch (error) {
       setError("An error occurred during login");
     } finally {
@@ -58,7 +61,7 @@ const LoginForm = ({ className, ...props }: React.ComponentProps<"div">) => {
   };
 
   return (
-    <div className={cn("flex flex-col gap-6", className)} {...props}>
+    <div>
       <Card>
         <CardHeader className="text-center">
           <CardTitle className="text-xl">Welcome back</CardTitle>
@@ -136,18 +139,6 @@ const LoginForm = ({ className, ...props }: React.ComponentProps<"div">) => {
           </form>
         </CardContent>
       </Card>
-
-      <div className="text-muted-foreground *:[a]:hover:text-primary text-center text-xs text-balance *:[a]:underline *:[a]:underline-offset-4">
-        By clicking continue, you agree to our{" "}
-        <a href="#" className="underline underline-offset-4">
-          Terms of Service
-        </a>{" "}
-        and{" "}
-        <a href="#" className="underline underline-offset-4">
-          Privacy Policy
-        </a>
-        .
-      </div>
     </div>
   );
 };
