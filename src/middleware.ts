@@ -2,10 +2,11 @@ import { NextResponse } from "next/server";
 import { type NextRequest } from "next/server";
 
 import { auth } from "@/lib/auth";
+import { headers } from "next/headers";
 
 export async function middleware(request: NextRequest) {
   const session = await auth.api.getSession({
-    headers: request.headers,
+    headers: await headers(),
   });
 
   const { pathname } = request.nextUrl;
@@ -34,8 +35,6 @@ export async function middleware(request: NextRequest) {
         session.user.role === "investor" ? "/dashboard/investor" : "/dashboard/entrepreneur";
       return NextResponse.redirect(new URL(redirectUrl, request.url));
     }
-
-    return NextResponse.next();
   }
 
   if (isInvestor && session!.user.role !== "investor") {
@@ -50,6 +49,15 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/((?!api|_next/static|_next/image|favicon.ico).*)"],
+  matcher: [
+    "/dashboard/entrepreneur",
+    "/dashboard/investor",
+    "/dashboard/:path*",
+    "/profile/entrepreneur",
+    "/profile/investor",
+    "/profile/:path*",
+    "/chat/(.*)",
+  ],
 };
+
 // This middleware checks the session and redirects users based on their role and the requested path.
