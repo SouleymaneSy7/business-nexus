@@ -23,7 +23,6 @@ import {
 } from "@/components/ui/select";
 import { Checkbox } from "@components/ui/checkbox";
 import { Textarea } from "@components/ui/textarea";
-import { auth } from "@/lib/auth";
 
 const registerSchema = z
   .object({
@@ -49,15 +48,6 @@ const registerSchema = z
   });
 
 type RegisterFormData = z.infer<typeof registerSchema>;
-type SignUpParams = {
-  email: string;
-  password: string;
-  name: string;
-  role: "entrepreneur" | "investor";
-  company: string;
-  bio: string;
-  isAgreedToTerms: boolean;
-};
 
 const RegisterForm = () => {
   const [isLoading, setIsLoading] = React.useState(false);
@@ -93,28 +83,6 @@ const RegisterForm = () => {
         return;
       }
 
-      const signUpData: SignUpParams = {
-        email: data.email,
-        password: data.password,
-        name: data.name,
-        role: data.role,
-        company: data.company,
-        bio: data.bio,
-        isAgreedToTerms: data.terms,
-      };
-
-      const result = await auth.api.signInEmail({
-        body: signUpData
-      });
-
-      console.log(result)
-
-      if (error) {
-        setError("Error when creating account");
-        return;
-      }
-
-      // Redirect to the dashboard corresponding to the role
       router.push(`/dashboard/${data.role}`);
     } catch (error) {
       setError("An error occurred during registration");

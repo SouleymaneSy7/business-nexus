@@ -6,9 +6,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import Link from "next/link";
-import { cn } from "@/lib/utils";
 import { useRouter } from "next/navigation";
-import { signIn } from "@/lib/auth-client";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -41,18 +39,10 @@ const LoginForm = ({ className, ...props }: React.ComponentProps<"div">) => {
     setIsLoading(true);
     setError(null);
 
+    const role = "entrepreneur";
+
     try {
-      const { data: result, error } = await signIn.email({
-        email: data.email,
-        password: data.password,
-      });
-
-      if (error) {
-        setError("Incorrect email or password");
-      }
-
-      // Redirect to the dashboard corresponding to the role
-      router.push(`/dashboard/${result?.user.role}`);
+      router.push(`/dashboard/${role}`);
     } catch (error) {
       setError("An error occurred during login");
     } finally {
