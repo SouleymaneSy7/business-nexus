@@ -23,6 +23,7 @@ import {
 } from "@/components/ui/select";
 import { Checkbox } from "@components/ui/checkbox";
 import { Textarea } from "@components/ui/textarea";
+import Container from "@components/common/Container";
 
 const registerSchema = z
   .object({
@@ -50,9 +51,20 @@ const registerSchema = z
 type RegisterFormData = z.infer<typeof registerSchema>;
 
 const RegisterForm = () => {
-  const [isLoading, setIsLoading] = React.useState(false);
-  const [error, setError] = React.useState<string | null>(null);
   const router = useRouter();
+
+  const [isLoading, setIsLoading] = React.useState(false);
+  const [errorMessage, setErrorMessage] = React.useState<string | null>(null);
+
+  const id = React.useId();
+  const nameId = `${id}-name`;
+  const emailId = `${id}-email`;
+  const passwordId = `${id}-password`;
+  const confirmPasswordId = `${id}-confirm-password`;
+  const roleId = `${id}-role`;
+  const companyId = `${id}-company`;
+  const bioId = `${id}-bio`;
+  const termsId = `${id}-terms`;
 
   const {
     register,
@@ -75,139 +87,152 @@ const RegisterForm = () => {
 
   const onSubmit = async (data: RegisterFormData) => {
     setIsLoading(true);
-    setError(null);
+    setErrorMessage(null);
 
     try {
       if (!data.terms) {
-        setError("You must accept the terms and conditions.");
+        setErrorMessage("You must accept the terms and conditions.");
         return;
       }
 
       router.push(`/dashboard/${data.role}`);
     } catch (error) {
-      setError("An error occurred during registration");
+      setErrorMessage("An error occurred during registration");
     } finally {
       setIsLoading(false);
     }
   };
 
   return (
-    <div className="flex flex-col gap-6">
-      <Card className="mx-auto w-full max-w-md">
+    <Container className="mx-auto flex w-full max-w-lg flex-col gap-6">
+      <Card className="">
         <CardHeader>
-          <CardTitle>Register</CardTitle>
+          <CardTitle className="text-primary text-2xl">Register</CardTitle>
           <CardDescription>Create your Business Nexus account</CardDescription>
         </CardHeader>
 
         <CardContent>
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="name">Full Name</Label>
-              <Input id="name" placeholder="John Doe" {...register("name")} disabled={isLoading} />
-              {errors.name && <p className="text-sm text-red-500">{errors.name.message}</p>}
+              <Label htmlFor={nameId}>Full Name</Label>
+              <Input
+                id={nameId}
+                placeholder="John Doe"
+                {...register("name")}
+                disabled={isLoading}
+              />
+              {errors.name && <small className="text-sm text-red-500">{errors.name.message}</small>}
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="email">Email</Label>
+              <Label htmlFor={emailId}>Email</Label>
               <Input
-                id="email"
+                id={emailId}
                 type="email"
                 placeholder="your@email.com"
                 {...register("email")}
                 disabled={isLoading}
               />
-              {errors.email && <p className="text-sm text-red-500">{errors.email.message}</p>}
+              {errors.email && (
+                <small className="text-sm text-red-500">{errors.email.message}</small>
+              )}
             </div>
 
             <div className="item-center flex w-full gap-4">
               <div className="w-1/2 space-y-2">
-                <Label htmlFor="role">I am a</Label>
+                <Label htmlFor={roleId}>I am a</Label>
+
                 <Select
                   onValueChange={(value) => setValue("role", value as "investor" | "entrepreneur")}
                 >
                   <SelectTrigger>
-                    <SelectValue placeholder="Select your role" />
+                    <SelectValue placeholder="Select your role" id={roleId} />
                   </SelectTrigger>
                   <SelectContent>
                     <SelectItem value="entrepreneur">Entrepreneur</SelectItem>
                     <SelectItem value="investor">Investor</SelectItem>
                   </SelectContent>
                 </Select>
-                {errors.role && <p className="text-sm text-red-500">{errors.role.message}</p>}
+
+                {errors.role && (
+                  <small className="text-sm text-red-500">{errors.role.message}</small>
+                )}
               </div>
 
               <div className="w-1/2 space-y-2">
-                <Label htmlFor="company">Company</Label>
+                <Label htmlFor={companyId}>Company</Label>
                 <Input
-                  id="company"
+                  id={companyId}
                   type="text"
                   placeholder="Company Name"
                   {...register("company")}
                   disabled={isLoading}
                 />
-
                 {errors.company && <p className="text-sm text-red-500">{errors.company.message}</p>}
               </div>
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="bio">Bio</Label>
-
+              <Label htmlFor={bioId}>Bio</Label>
               <Textarea
-                placeholder="Your Bio here..."
-                id="bio"
-                {...register("bio")}
+                id={bioId}
                 disabled={isLoading}
+                {...register("bio")}
+                placeholder="Your Bio here..."
               />
-
-              {errors.bio && <p className="text-sm text-red-500">{errors.bio.message}</p>}
+              {errors.bio && <small className="text-sm text-red-500">{errors.bio.message}</small>}
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="password">Password</Label>
+              <Label htmlFor={passwordId}>Password</Label>
               <Input
-                id="password"
+                id={passwordId}
                 type="password"
                 placeholder="••••••••"
                 {...register("password")}
                 disabled={isLoading}
               />
-              {errors.password && <p className="text-sm text-red-500">{errors.password.message}</p>}
+              {errors.password && (
+                <small className="text-sm text-red-500">{errors.password.message}</small>
+              )}
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="confirmPassword">Confirm Password</Label>
+              <Label htmlFor={confirmPasswordId}>Confirm Password</Label>
+
               <Input
-                id="confirmPassword"
+                id={confirmPasswordId}
                 type="password"
+                disabled={isLoading}
                 placeholder="••••••••"
                 {...register("confirmPassword")}
-                disabled={isLoading}
               />
               {errors.confirmPassword && (
-                <p className="text-sm text-red-500">{errors.confirmPassword.message}</p>
+                <small className="text-sm text-red-500">{errors.confirmPassword.message}</small>
               )}
             </div>
 
             <div className="space-y-2">
               <div className="flex items-center gap-2">
                 <Checkbox
-                  id="terms"
+                  id={termsId}
                   {...register("terms")}
                   onCheckedChange={(checked) => {
                     setValue("terms", checked === true);
                   }}
                   disabled={isLoading}
                 />
-                <Label htmlFor="terms">Accept terms and conditions</Label>
+                <Label htmlFor={termsId}>Accept terms and conditions</Label>
               </div>
 
-              {errors.terms && <p className="text-sm text-red-500">{errors.terms.message}</p>}
+              {errors.terms && (
+                <small className="text-sm text-red-500">{errors.terms.message}</small>
+              )}
             </div>
 
-            {error && (
+            {errorMessage && (
               <Alert variant="destructive">
-                <AlertDescription>{error}</AlertDescription>
+                <AlertDescription>{errorMessage}</AlertDescription>
               </Alert>
             )}
 
@@ -239,7 +264,7 @@ const RegisterForm = () => {
         </a>
         .
       </div>
-    </div>
+    </Container>
   );
 };
 
