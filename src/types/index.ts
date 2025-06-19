@@ -10,6 +10,7 @@ export type VisuallyHiddenPropsType = {
 
 export interface TitlePropsType extends React.HTMLAttributes<HTMLElement> {
   level: keyof React.JSX.IntrinsicElements;
+  ariaLevel?: number | undefined;
   children: React.ReactNode;
 }
 
