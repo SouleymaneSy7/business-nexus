@@ -10,6 +10,7 @@ import { Button } from "@components/ui/button";
 import { Avatar, AvatarImage, AvatarFallback } from "@components/ui/avatar";
 import { getNameInitials } from "@/utils/getNameInitials";
 import Container from "@components/common/Container";
+import Title from "@components/common/Title";
 
 const Chat = ({ currentUser, otherUser }: any) => {
   const [messages, setMessages] = React.useState<any>([
@@ -61,19 +62,21 @@ const Chat = ({ currentUser, otherUser }: any) => {
             <Avatar className="grow">
               <AvatarImage src={otherUser.avatar} />
 
-              <AvatarFallback className=" bg-blue-200">
+              <AvatarFallback className="bg-blue-200">
                 <p>{getNameInitials(otherUser.name)}</p>
               </AvatarFallback>
             </Avatar>
 
             <div>
-              <h3 className="font-semibold text-gray-900">{otherUser.name}</h3>
+              <Title level="h3" ariaLevel={3} className="font-semibold text-gray-900">
+                {otherUser.name}
+              </Title>
               <p className="text-sm text-gray-500">{otherUser.startupName || otherUser.firm}</p>
             </div>
           </div>
 
           <div className="flex items-center space-x-2">
-            <div className="h-2 w-2 rounded-full bg-green-400"></div>
+            <div className="h-2 w-2 rounded-full bg-green-400" />
             <span className="text-sm text-gray-500">Online</span>
           </div>
         </div>
