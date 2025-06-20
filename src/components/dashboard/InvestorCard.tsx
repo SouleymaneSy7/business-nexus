@@ -13,11 +13,7 @@ import {
 import { MapPinIcon, AwardIcon, MessageCircleIcon, EyeIcon } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@components/ui/avatar";
 import { getNameInitials } from "@/utils/getNameInitials";
-import { InvestorDataType } from "@/types";
-
-interface InvestorCardProps {
-  investor: InvestorDataType[number];
-}
+import { InvestorCardProps } from "@/types";
 
 const InvestorCard: React.FC<InvestorCardProps> = ({ investor }) => (
   <Card className="rounded-lg bg-white p-6 shadow-md">
