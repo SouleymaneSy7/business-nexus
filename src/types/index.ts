@@ -74,3 +74,15 @@ export type CollaborationRequestDataType = {
   message: string;
   createdAt: string;
 }[];
+
+export interface EntrepreneurProfilePropsType {
+  entrepreneur: EntrepreneurDataType[number];
+}
+
+export interface EntrepreneurCardPropsType {
+  entrepreneur: EntrepreneurDataType[number];
+}
+
+export interface InvestorCardProps {
+  investor: InvestorDataType[number];
+}
