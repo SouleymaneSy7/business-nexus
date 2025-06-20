@@ -86,3 +86,7 @@ export interface EntrepreneurCardPropsType {
 export interface InvestorCardProps {
   investor: InvestorDataType[number];
 }
+
+export interface InvestorProfilePropsType {
+  investor: InvestorDataType[number];
+}
