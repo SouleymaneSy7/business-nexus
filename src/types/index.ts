@@ -90,3 +90,7 @@ export interface InvestorCardProps {
 export interface InvestorProfilePropsType {
   investor: InvestorDataType[number];
 }
+
+export type PagePropsType = {
+  id: string | number;
+};
