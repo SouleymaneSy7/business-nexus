@@ -59,10 +59,10 @@ const Chat = ({ currentUser, otherUser }: any) => {
               </Link>
             </Button>
 
-            <Avatar className="grow">
+            <Avatar>
               <AvatarImage src={otherUser.avatar} />
 
-              <AvatarFallback className="bg-blue-200">
+              <AvatarFallback className="bg-primary/30">
                 <p>{getNameInitials(otherUser.name)}</p>
               </AvatarFallback>
             </Avatar>
