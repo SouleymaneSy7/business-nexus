@@ -8,10 +8,17 @@ export type VisuallyHiddenPropsType = {
   children: React.ReactNode;
 } & React.ComponentPropsWithoutRef<"span">;
 
-export interface TitlePropsType extends React.HTMLAttributes<HTMLElement> {
+export interface TitlePropsType extends React.HTMLAttributes<HTMLHeadingElement> {
   level: keyof React.JSX.IntrinsicElements;
   ariaLevel?: number | undefined;
   children: React.ReactNode;
+}
+
+export interface CardTitlePropsType extends React.HTMLAttributes<HTMLHeadingElement> {
+  className?: string;
+  children: React.ReactNode;
+  level?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+  ariaLevel?: number;
 }
 
 export type ContainerPropsTypes<T extends React.ElementType> = {
