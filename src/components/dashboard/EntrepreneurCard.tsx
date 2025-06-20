@@ -3,14 +3,10 @@ import Link from "next/link";
 
 import { Button } from "@components/ui/button";
 import { getNameInitials } from "@/utils/getNameInitials";
-import { EntrepreneurDataType } from "@/types";
+import { EntrepreneurCardPropsType } from "@/types";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { MapPinIcon, BuildingIcon, MessageCircleIcon, EyeIcon } from "lucide-react";
 import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from "@components/ui/card";
-
-interface EntrepreneurCardPropsType {
-  entrepreneur: EntrepreneurDataType[number];
-}
 
 const EntrepreneurCard: React.FC<EntrepreneurCardPropsType> = ({ entrepreneur }) => (
   <Card className="rounded-lg bg-white p-6 shadow-md">
