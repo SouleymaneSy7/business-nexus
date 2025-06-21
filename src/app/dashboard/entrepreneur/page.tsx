@@ -9,7 +9,7 @@ import EntrepreneurCard from "@components/dashboard/EntrepreneurCard";
 const Page = () => {
   return (
     <DashboardLayout>
-      <div className="mx-auto max-w-7xl p-6">
+      <div className="max-w-7xl p-6">
         <div className="mb-8">
           <h2 className="mb-2 text-3xl font-bold text-gray-900">Discover Entrepreneurs</h2>
           <p className="text-gray-600">Find promising startups and entrepreneurs to invest in:</p>
