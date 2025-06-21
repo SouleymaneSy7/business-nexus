@@ -19,6 +19,8 @@ import {
 import List from "@components/common/List";
 import Title from "@components/common/Title";
 import SidebarUser from "./SidebarUser";
+import { ThemeToggle } from "./ThemeToggle";
+import Container from "@components/common/Container";
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const user = {
@@ -41,45 +43,48 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   ];
 
   return (
-      <Sidebar variant="floating" {...props}>
-        <SidebarHeader>
-          <SidebarMenuButton size="lg" asChild>
-            <a href="#">
-              <Title level="h1" ariaLevel={1} className="text-primary text-2xl font-semibold">
-                Business Nexus
-              </Title>
-            </a>
-          </SidebarMenuButton>
-        </SidebarHeader>
+    <Sidebar variant="floating" {...props}>
+      <SidebarHeader>
+        <SidebarMenuButton size="lg" asChild>
+          <a href="#">
+            <Title level="h1" ariaLevel={1} className="text-primary text-2xl font-semibold">
+              Business Nexus
+            </Title>
+          </a>
+        </SidebarMenuButton>
+      </SidebarHeader>
 
-        <SidebarContent>
-          <SidebarGroup>
-            <SidebarGroupContent>
-              <SidebarMenu>
-                <List
-                  items={navItems}
-                  renderItem={(item) => {
-                    return (
-                      <SidebarMenuItem key={item.title}>
-                        <SidebarMenuButton asChild>
-                          <Link href={item.url}>
-                            <item.icon />
-                            <span>{item.title}</span>
-                          </Link>
-                        </SidebarMenuButton>
-                      </SidebarMenuItem>
-                    );
-                  }}
-                />
-              </SidebarMenu>
-            </SidebarGroupContent>
-          </SidebarGroup>
-        </SidebarContent>
+      <SidebarContent>
+        <SidebarGroup>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              <List
+                items={navItems}
+                renderItem={(item) => {
+                  return (
+                    <SidebarMenuItem key={item.title}>
+                      <SidebarMenuButton asChild>
+                        <Link href={item.url}>
+                          <item.icon />
+                          <span>{item.title}</span>
+                        </Link>
+                      </SidebarMenuButton>
+                    </SidebarMenuItem>
+                  );
+                }}
+              />
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+      </SidebarContent>
 
-        <SidebarFooter>
+      <SidebarFooter>
+        <Container className="flex items-center gap-4">
           <SidebarUser user={user} />
-        </SidebarFooter>
-        <SidebarRail />
-      </Sidebar>
+          <ThemeToggle />
+        </Container>
+      </SidebarFooter>
+      <SidebarRail />
+    </Sidebar>
   );
 }
