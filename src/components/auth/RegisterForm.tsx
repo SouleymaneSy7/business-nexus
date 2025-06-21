@@ -24,6 +24,7 @@ import {
 import { Checkbox } from "@components/ui/checkbox";
 import { Textarea } from "@components/ui/textarea";
 import Container from "@components/common/Container";
+import Title from "@components/common/Title";
 
 const registerSchema = z
   .object({
@@ -105,9 +106,15 @@ const RegisterForm = () => {
 
   return (
     <Container className="mx-auto flex w-full max-w-lg flex-col gap-6">
-      <Card className="">
+      <Title level="h1" ariaLevel={1} className="text-primary text-center text-2xl font-semibold">
+        Business Nexus
+      </Title>
+
+      <Card className="py-8">
         <CardHeader>
-          <CardTitle className="text-primary text-2xl">Register</CardTitle>
+          <CardTitle level="h2" ariaLevel={2} className="text-primary text-lg">
+            Register
+          </CardTitle>
           <CardDescription>Create your Business Nexus account</CardDescription>
         </CardHeader>
 
@@ -222,7 +229,9 @@ const RegisterForm = () => {
                   }}
                   disabled={isLoading}
                 />
-                <Label htmlFor={termsId}>Accept terms and conditions</Label>
+                <Label htmlFor={termsId} className="font-semibold">
+                  Accept terms and conditions
+                </Label>
               </div>
 
               {errors.terms && (
@@ -245,7 +254,7 @@ const RegisterForm = () => {
           <div className="mt-4 text-center">
             <p className="text-muted-foreground text-sm">
               Already have an account?{" "}
-              <Link href="/login" className="text-primary hover:underline">
+              <Link href="/login" className="text-primary font-semibold underline underline-offset-4">
                 Login
               </Link>
             </p>
@@ -255,11 +264,11 @@ const RegisterForm = () => {
 
       <div className="text-muted-foreground *:[a]:hover:text-primary text-center text-xs text-balance *:[a]:underline *:[a]:underline-offset-4">
         By clicking continue, you agree to our{" "}
-        <a href="#" className="underline underline-offset-4">
+        <a href="#" className="text-primary font-semibold underline underline-offset-4">
           Terms of Service
         </a>{" "}
         and{" "}
-        <a href="#" className="underline underline-offset-4">
+        <a href="#" className="text-primary font-semibold underline underline-offset-4">
           Privacy Policy
         </a>
         .
