@@ -1,9 +1,7 @@
 import * as React from "react";
 import type { Metadata } from "next";
 import { Space_Grotesk } from "next/font/google";
-
 import "./globals.css";
-import { SidebarProvider } from "@components/ui/sidebar";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -13,11 +11,12 @@ const spaceGrotesk = Space_Grotesk({
 
 export const metadata: Metadata = {
   title: "Business Nexus",
-  description: "Business Nexus is a platform designed to connect entrepreneurs and investors, enabling seamless collaboration, networking, and growth opportunities for innovative business ventures.",
+  description:
+    "Business Nexus is a platform designed to connect entrepreneurs and investors, enabling seamless collaboration, networking, and growth opportunities for innovative business ventures.",
   openGraph: {
     title: "Business Nexus",
     siteName: "Business Nexus",
-    url: "https://business-nexus.vercel.app",
+    url: "https://business-nexus.netlify.app",
     description: "Connect entrepreneurs and investors for seamless collaboration.",
     locale: "en_US",
     type: "website",
@@ -31,11 +30,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${spaceGrotesk.className} antialiased`}>
-        <SidebarProvider>
-          {children}
-        </SidebarProvider>
-      </body>
+      <body className={`${spaceGrotesk.className} antialiased`}>{children}</body>
     </html>
   );
 }
