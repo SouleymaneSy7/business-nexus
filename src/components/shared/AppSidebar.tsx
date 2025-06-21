@@ -13,6 +13,7 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
+  SidebarProvider,
   SidebarRail,
 } from "@/components/ui/sidebar";
 
@@ -41,45 +42,47 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   ];
 
   return (
-    <Sidebar variant="inset" {...props}>
-      <SidebarHeader>
-        <SidebarMenuButton size="lg" asChild>
-          <a href="#">
-            <Title level="h1" ariaLevel={1} className="text-lg font-semibold">
-              Business Nexus
-            </Title>
-          </a>
-        </SidebarMenuButton>
-      </SidebarHeader>
+    <SidebarProvider>
+      <Sidebar variant="inset" {...props}>
+        <SidebarHeader>
+          <SidebarMenuButton size="lg" asChild>
+            <a href="#">
+              <Title level="h1" ariaLevel={1} className="text-primary text-2xl font-semibold">
+                Business Nexus
+              </Title>
+            </a>
+          </SidebarMenuButton>
+        </SidebarHeader>
 
-      <SidebarContent>
-        <SidebarGroup>
-          <SidebarGroupContent>
-            <SidebarMenu>
-              <List
-                items={navItems}
-                renderItem={(item) => {
-                  return (
-                    <SidebarMenuItem key={item.title}>
-                      <SidebarMenuButton asChild>
-                        <Link href={item.url}>
-                          <item.icon />
-                          <span>{item.title}</span>
-                        </Link>
-                      </SidebarMenuButton>
-                    </SidebarMenuItem>
-                  );
-                }}
-              />
-            </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
-      </SidebarContent>
+        <SidebarContent>
+          <SidebarGroup>
+            <SidebarGroupContent>
+              <SidebarMenu>
+                <List
+                  items={navItems}
+                  renderItem={(item) => {
+                    return (
+                      <SidebarMenuItem key={item.title}>
+                        <SidebarMenuButton asChild>
+                          <Link href={item.url}>
+                            <item.icon />
+                            <span>{item.title}</span>
+                          </Link>
+                        </SidebarMenuButton>
+                      </SidebarMenuItem>
+                    );
+                  }}
+                />
+              </SidebarMenu>
+            </SidebarGroupContent>
+          </SidebarGroup>
+        </SidebarContent>
 
-      <SidebarFooter>
-        <SidebarUser user={user} />
-      </SidebarFooter>
-      <SidebarRail />
-    </Sidebar>
+        <SidebarFooter>
+          <SidebarUser user={user} />
+        </SidebarFooter>
+        <SidebarRail />
+      </Sidebar>
+    </SidebarProvider>
   );
 }
