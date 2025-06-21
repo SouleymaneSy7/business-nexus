@@ -11,36 +11,10 @@ import { Avatar, AvatarImage, AvatarFallback } from "@components/ui/avatar";
 import { getNameInitials } from "@/utils/getNameInitials";
 import Container from "@components/common/Container";
 import Title from "@components/common/Title";
-
-export interface OtherUserType {
-  id: number | string;
-  name: string;
-  email: string;
-  phone: string;
-  startupName: string;
-  bio: string;
-  startupDescription: string;
-  fundingNeed: string;
-  industry: string;
-  location: string;
-  website: string;
-  foundedYear: number;
-  teamSize: number;
-  avatar: string;
-  firm?: string;
-}
-
-export interface CurrentUserPropsType extends OtherUserType {
-  role: string;
-}
-
-export type ChatPropsType = {
-  currentUser: CurrentUserPropsType;
-  otherUser: OtherUserType;
-};
+import { ChatMessageType, ChatPropsType } from "@/types";
 
 const Chat: React.FC<ChatPropsType> = ({ currentUser, otherUser }) => {
-  const [messages, setMessages] = React.useState<any>([
+  const [messages, setMessages] = React.useState<ChatMessageType[]>([
     {
       id: 1,
       senderId: otherUser.id,
@@ -109,7 +83,7 @@ const Chat: React.FC<ChatPropsType> = ({ currentUser, otherUser }) => {
         </div>
 
         <div className="flex-1 space-y-4 overflow-y-auto p-4">
-          {messages.map((message: any) => (
+          {messages.map((message: ChatMessageType) => (
             <div
               key={message.id}
               className={`flex ${message.isCurrentUser ? "justify-end" : "justify-start"}`}
