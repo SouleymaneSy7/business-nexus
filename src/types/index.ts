@@ -94,3 +94,39 @@ export interface InvestorProfilePropsType {
 export type PagePropsType = {
   id: string | number;
 };
+
+export interface OtherUserType {
+  id: number | string;
+  name: string;
+  email: string;
+  phone: string;
+  startupName: string;
+  bio: string;
+  startupDescription: string;
+  fundingNeed: string;
+  industry: string;
+  location: string;
+  website: string;
+  foundedYear: number;
+  teamSize: number;
+  avatar: string;
+  firm?: string;
+}
+
+export interface CurrentUserPropsType extends OtherUserType {
+  role: string;
+}
+
+export type ChatPropsType = {
+  currentUser: CurrentUserPropsType;
+  otherUser: OtherUserType;
+};
+
+export type ChatMessageType = {
+  id: number;
+  senderId: string | number;
+  senderName: string;
+  message: string;
+  timestamp: string;
+  isCurrentUser: boolean;
+};
