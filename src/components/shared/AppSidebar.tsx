@@ -13,7 +13,6 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-  SidebarProvider,
   SidebarRail,
 } from "@/components/ui/sidebar";
 
@@ -42,8 +41,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   ];
 
   return (
-    <SidebarProvider>
-      <Sidebar variant="inset" {...props}>
+      <Sidebar variant="floating" {...props}>
         <SidebarHeader>
           <SidebarMenuButton size="lg" asChild>
             <a href="#">
@@ -83,6 +81,5 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         </SidebarFooter>
         <SidebarRail />
       </Sidebar>
-    </SidebarProvider>
   );
 }
