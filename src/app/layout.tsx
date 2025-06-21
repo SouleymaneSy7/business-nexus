@@ -3,7 +3,6 @@ import type { Metadata } from "next";
 import { Space_Grotesk } from "next/font/google";
 
 import "./globals.css";
-import { Toaster } from "@/components/ui/sonner";
 import { SidebarProvider } from "@components/ui/sidebar";
 
 const spaceGrotesk = Space_Grotesk({
@@ -14,7 +13,15 @@ const spaceGrotesk = Space_Grotesk({
 
 export const metadata: Metadata = {
   title: "Business Nexus",
-  description: "Business Nexus app",
+  description: "Business Nexus is a platform designed to connect entrepreneurs and investors, enabling seamless collaboration, networking, and growth opportunities for innovative business ventures.",
+  openGraph: {
+    title: "Business Nexus",
+    siteName: "Business Nexus",
+    url: "https://business-nexus.vercel.app",
+    description: "Connect entrepreneurs and investors for seamless collaboration.",
+    locale: "en_US",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
@@ -24,10 +31,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${spaceGrotesk.variable} antialiased`}>
+      <body className={`${spaceGrotesk.className} antialiased`}>
         <SidebarProvider>
           {children}
-          <Toaster />
         </SidebarProvider>
       </body>
     </html>
