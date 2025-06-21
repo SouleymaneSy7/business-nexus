@@ -1,8 +1,16 @@
 import * as React from "react";
 import type { Metadata } from "next";
+import { Space_Grotesk } from "next/font/google";
 
-import { Toaster } from "@/components/ui/sonner";
 import "./globals.css";
+import { Toaster } from "@/components/ui/sonner";
+import { SidebarProvider } from "@components/ui/sidebar";
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-space-grotesk",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Business Nexus",
@@ -16,9 +24,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`antialiased`}>
-        {children}
-        <Toaster />
+      <body className={`${spaceGrotesk.variable} antialiased`}>
+        <SidebarProvider>
+          {children}
+          <Toaster />
+        </SidebarProvider>
       </body>
     </html>
   );
