@@ -8,15 +8,16 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Loader2Icon } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Loader2Icon } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Checkbox } from "@components/ui/checkbox";
 import { Alert, AlertDescription } from "@components/ui/alert";
 import { GoogleIcon, GithubIcon } from "@/icons/Icons.component";
-import { Checkbox } from "@components/ui/checkbox";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
+import Title from "@components/common/Title";
 import Container from "@components/common/Container";
 
 type LoginFormType = z.infer<typeof loginSchema>;
@@ -61,10 +62,16 @@ const LoginForm = () => {
   };
 
   return (
-    <Container as={"main"} className="w-full max-w-lg">
-      <Card>
-        <CardHeader className="text-center">
-          <CardTitle className="text-primary text-2xl">Welcome back</CardTitle>
+    <Container as={"main"} className="flex w-full max-w-lg flex-col gap-6">
+      <Title level="h1" ariaLevel={1} className="text-primary text-center text-2xl font-semibold">
+        Business Nexus
+      </Title>
+
+      <Card className="py-8">
+        <CardHeader className="mb-6 text-center">
+          <CardTitle level="h2" ariaLevel={2} className="text-primary text-lg">
+            Welcome back
+          </CardTitle>
           <CardDescription>Login with your Google or Github account</CardDescription>
         </CardHeader>
 
@@ -107,7 +114,15 @@ const LoginForm = () => {
                 </div>
 
                 <div className="grid gap-3">
-                  <Label htmlFor={passwordId}>Password</Label>
+                  <div className="flex items-center">
+                    <Label htmlFor="password">Password</Label>
+                    <a
+                      href="#"
+                      className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
+                    >
+                      Forgot your password?
+                    </a>
+                  </div>
 
                   <Input
                     required
@@ -125,7 +140,9 @@ const LoginForm = () => {
 
                 <div className="flex items-center gap-2">
                   <Checkbox id={rememberId} className="cursor-pointer" />
-                  <Label htmlFor={rememberId}>Remember Me</Label>
+                  <Label htmlFor={rememberId} className="font-semibold">
+                    Remember Me
+                  </Label>
                 </div>
 
                 {errorMessage && (
@@ -134,8 +151,12 @@ const LoginForm = () => {
                   </Alert>
                 )}
 
-                <Button type="submit" className="w-full cursor-pointer" disabled={isLoading}>
-                  {isLoading && <Loader2Icon className="mr-2 h-4 w-4 animate-spin" />}
+                <Button
+                  type="submit"
+                  disabled={isLoading}
+                  className="flex w-full cursor-pointer items-center gap-2"
+                >
+                  {isLoading && <Loader2Icon className="h-4 w-4 animate-spin" />}
                   Login
                 </Button>
               </div>
