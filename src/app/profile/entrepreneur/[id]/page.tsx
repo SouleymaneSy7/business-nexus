@@ -1,8 +1,9 @@
-import { PagePropsType } from "@/types";
 import { mockEntrepreneurs } from "@/lib/mock-data";
 
 import DashboardLayout from "@/components/dashboard/DashboardLayout";
 import EntrepreneurProfile from "@components/profile/EntrepreneurProfile";
+
+export type PagePropsType = Promise<{ id: string | number }>;
 
 const page = async (props: { params: PagePropsType }) => {
   const params = await props.params;

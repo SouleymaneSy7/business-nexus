@@ -1,10 +1,8 @@
-import { mockEntrepreneurs } from "@/lib/mock-data";
 import Chat from "@components/chat/Chat";
+import { mockEntrepreneurs } from "@/lib/mock-data";
 import DashboardLayout from "@components/dashboard/DashboardLayout";
 
-type propsType = {
-  userId: string | number;
-};
+export type PagePropsType = Promise<{ userId: string | number }>;
 
 const user = {
   id: 1,
@@ -23,15 +21,19 @@ const user = {
   teamSize: 12,
   avatar:
     "https://images.unsplash.com/photo-1494790108755-2616b169a920?w=150&h=150&fit=crop&crop=faces",
-  role: "entrepreneur"
+  role: "entrepreneur",
 };
 
-const page = async (props: { params: propsType }) => {
+const page = async (props: { params: PagePropsType }) => {
   const params = await props.params;
   const otherUser = mockEntrepreneurs.find((e) => e.id == params.userId);
 
   if (!otherUser) {
-    return <div>There is no messages</div>;
+    return (
+      <DashboardLayout>
+        <div className="grid h-svh place-items-center">There is no Messages</div>
+      </DashboardLayout>
+    );
   }
 
   return (
