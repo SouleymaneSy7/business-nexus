@@ -46,7 +46,7 @@ const LoginForm = () => {
     resolver: zodResolver(loginSchema),
   });
 
-  const onSubmit = async (data: LoginFormType) => {
+  const onSubmit = async () => {
     setIsLoading(true);
     setErrorMessage(null);
 
@@ -55,6 +55,7 @@ const LoginForm = () => {
     try {
       router.push(`/dashboard/${role}`);
     } catch (error) {
+      console.error("Login error:", error);
       setErrorMessage("An error occurred during login");
     } finally {
       setIsLoading(false);

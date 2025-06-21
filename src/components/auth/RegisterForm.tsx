@@ -98,6 +98,7 @@ const RegisterForm = () => {
 
       router.push(`/dashboard/${data.role}`);
     } catch (error) {
+      console.error("Registration error:", error);
       setErrorMessage("An error occurred during registration");
     } finally {
       setIsLoading(false);
@@ -254,7 +255,10 @@ const RegisterForm = () => {
           <div className="mt-4 text-center">
             <p className="text-muted-foreground text-sm">
               Already have an account?{" "}
-              <Link href="/login" className="text-primary font-semibold underline underline-offset-4">
+              <Link
+                href="/login"
+                className="text-primary font-semibold underline underline-offset-4"
+              >
                 Login
               </Link>
             </p>

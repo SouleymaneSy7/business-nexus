@@ -50,7 +50,7 @@ const InvestorCard: React.FC<InvestorCardProps> = ({ investor }) => (
         <div className="mb-2 text-sm text-gray-500">Investment Interests:</div>
 
         <div className="flex flex-wrap gap-1">
-          {investor.investmentInterests.slice(0, 3).map((interest: string, index: any) => (
+          {investor.investmentInterests.slice(0, 3).map((interest: string, index: number) => (
             <span key={index} className="text-primary bg-primary/30 rounded-full px-2 py-1 text-xs">
               {interest}
             </span>

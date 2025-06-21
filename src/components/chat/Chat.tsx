@@ -12,7 +12,34 @@ import { getNameInitials } from "@/utils/getNameInitials";
 import Container from "@components/common/Container";
 import Title from "@components/common/Title";
 
-const Chat = ({ currentUser, otherUser }: any) => {
+export interface OtherUserType {
+  id: number | string;
+  name: string;
+  email: string;
+  phone: string;
+  startupName: string;
+  bio: string;
+  startupDescription: string;
+  fundingNeed: string;
+  industry: string;
+  location: string;
+  website: string;
+  foundedYear: number;
+  teamSize: number;
+  avatar: string;
+  firm?: string;
+}
+
+export interface CurrentUserPropsType extends OtherUserType {
+  role: string;
+}
+
+export type ChatPropsType = {
+  currentUser: CurrentUserPropsType;
+  otherUser: OtherUserType;
+};
+
+const Chat: React.FC<ChatPropsType> = ({ currentUser, otherUser }) => {
   const [messages, setMessages] = React.useState<any>([
     {
       id: 1,
