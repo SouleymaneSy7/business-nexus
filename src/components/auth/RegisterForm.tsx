@@ -231,7 +231,7 @@ const RegisterForm = () => {
                   disabled={isLoading}
                 />
                 <Label htmlFor={termsId} className="font-semibold">
-                  Accept terms and conditions
+                  I agree to terms and conditions.
                 </Label>
               </div>
 
