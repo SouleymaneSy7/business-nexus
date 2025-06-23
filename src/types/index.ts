@@ -99,7 +99,7 @@ export interface OtherUserType {
   startupName: string;
   bio: string;
   startupDescription: string;
-  fundingNeed: string;
+  fundingNeed: string | number;
   industry: string;
   location: string;
   website: string;
