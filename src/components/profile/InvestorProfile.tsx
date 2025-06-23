@@ -25,7 +25,7 @@ const InvestorProfile: React.FC<InvestorProfilePropsType> = ({ investor }) => (
     <Button
       asChild
       variant={"ghost"}
-      className="mb-6 px-4 py-2 text-primary transition-colors hover:bg-primary/30"
+      className="text-primary hover:text-primary hover:bg-primary/30 mb-6 px-4 py-2 transition-colors"
     >
       <Link href={"/dashboard/investor"}>
         <ArrowLeftIcon />
@@ -33,7 +33,7 @@ const InvestorProfile: React.FC<InvestorProfilePropsType> = ({ investor }) => (
       </Link>
     </Button>
 
-    <div className="overflow-hidden rounded-xl bg-white shadow-lg">
+    <div className="overflow-hidden rounded-xl bg-card shadow-lg">
       <div className="bg-gradient-to-r from-green-600 to-blue-600 p-8 text-white">
         <div className="flex items-start space-x-6">
           <Avatar className="size-24 shrink-0 border-4 border-white">
@@ -69,7 +69,7 @@ const InvestorProfile: React.FC<InvestorProfilePropsType> = ({ investor }) => (
 
           <Button
             asChild
-            className="text-primary cursor-pointer bg-white px-6 py-2 font-medium transition-colors hover:bg-primary/15"
+            className="text-primary hover:bg-primary/15 cursor-pointer bg-white px-6 py-2 font-medium transition-colors"
           >
             <Link href={`/chat/${investor.id}`} className="flex gap-2">
               <MessageCircleIcon className="h-4 w-4" />
@@ -83,14 +83,14 @@ const InvestorProfile: React.FC<InvestorProfilePropsType> = ({ investor }) => (
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
           <div className="space-y-8 lg:col-span-2">
             <div>
-              <Title level="h2" ariaLevel={2} className="mb-4 text-2xl font-bold text-gray-900">
+              <Title level="h2" ariaLevel={2} className="mb-4 text-2xl font-bold text-card-foreground">
                 About
               </Title>
-              <p className="leading-relaxed text-gray-700">{investor.bio}</p>
+              <p className="leading-relaxed text-muted-foreground">{investor.bio}</p>
             </div>
 
             <div>
-              <Title level="h2" ariaLevel={2} className="mb-4 text-2xl font-bold text-gray-900">
+              <Title level="h2" ariaLevel={2} className="mb-4 text-2xl font-bold text-card-foreground">
                 Investment Interests
               </Title>
 
@@ -108,7 +108,7 @@ const InvestorProfile: React.FC<InvestorProfilePropsType> = ({ investor }) => (
             </div>
 
             <div>
-              <Title level="h2" ariaLevel={2} className="mb-4 text-2xl font-bold text-gray-900">
+              <Title level="h2" ariaLevel={2} className="mb-4 text-2xl font-bold text-card-foreground">
                 Companies
               </Title>
 
@@ -117,8 +117,8 @@ const InvestorProfile: React.FC<InvestorProfilePropsType> = ({ investor }) => (
                 className="grid grid-cols-2 gap-4"
                 items={investor.portfolioCompanies}
                 renderItem={(item) => (
-                  <div key={item} className="rounded-lg bg-gray-50 p-4 text-center">
-                    <div className="text-sm font-medium text-gray-600">{item}</div>
+                  <div key={item} className="rounded-lg bg-secondary p-4 text-center">
+                    <div className="text-sm font-medium text-secondary-foreground">{item}</div>
                   </div>
                 )}
               />
@@ -126,48 +126,48 @@ const InvestorProfile: React.FC<InvestorProfilePropsType> = ({ investor }) => (
           </div>
 
           <div className="space-y-6">
-            <div className="rounded-lg bg-gray-50 p-6">
-              <Title level="h3" ariaLevel={3} className="mb-4 text-lg font-semibold text-gray-900">
+            <div className="rounded-lg bg-secondary p-6">
+              <Title level="h3" ariaLevel={3} className="mb-4 text-lg font-semibold text-card-foreground">
                 Investment Details
               </Title>
 
               <div className="space-y-3">
                 <div className="flex justify-between">
-                  <span className="text-gray-600">Investment Range:</span>
+                  <span className="text-muted-foreground">Investment Range:</span>
                   <span className="font-semibold text-green-600">{investor.investmentRange}</span>
                 </div>
 
                 <div className="flex justify-between">
-                  <span className="text-gray-600">Experience:</span>
+                  <span className="text-muted-foreground">Experience:</span>
                   <span className="font-semibold">{investor.yearsExperience} years</span>
                 </div>
 
                 <div className="flex justify-between">
-                  <span className="text-gray-600">Total Investments:</span>
+                  <span className="text-muted-foreground">Total Investments:</span>
                   <span className="font-semibold">{investor.totalInvestments}</span>
                 </div>
               </div>
             </div>
 
-            <div className="rounded-lg bg-gray-50 p-6">
-              <Title level="h3" ariaLevel={3} className="mb-4 text-lg font-semibold text-gray-900">
+            <div className="rounded-lg bg-secondary p-6">
+              <Title level="h3" ariaLevel={3} className="mb-4 text-lg font-semibold text-card-foreground">
                 Contact Information
               </Title>
 
               <div className="space-y-3">
                 <div className="flex items-center space-x-2">
-                  <MailIcon className="h-4 w-4 text-gray-400" />
-                  <span className="text-sm text-gray-600">{investor.email}</span>
+                  <MailIcon className="h-4 w-4 text-muted-foreground" />
+                  <span className="text-sm text-muted-foreground/50">{investor.email}</span>
                 </div>
 
                 <div className="flex items-center space-x-2">
-                  <PhoneIcon className="h-4 w-4 text-gray-400" />
-                  <span className="text-sm text-gray-600">{investor.phone}</span>
+                  <PhoneIcon className="h-4 w-4 text-muted-foreground" />
+                  <span className="text-sm text-muted-foreground/50">{investor.phone}</span>
                 </div>
 
                 <div className="flex items-center space-x-2">
-                  <GlobeIcon className="h-4 w-4 text-gray-400" />
-                  <span className="text-sm text-primary">{investor.website}</span>
+                  <GlobeIcon className="h-4 w-4 text-muted-foreground" />
+                  <span className="text-primary text-sm">{investor.website}</span>
                 </div>
               </div>
             </div>
