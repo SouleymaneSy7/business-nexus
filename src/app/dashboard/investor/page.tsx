@@ -1,10 +1,11 @@
 "use client";
 
 import { mockInvestors } from "@/lib/mock-data";
-import DashboardLayout from "@/components/dashboard/DashboardLayout";
+
 import List from "@components/common/List";
-import InvestorCard from "@components/dashboard/InvestorCard";
 import Title from "@components/common/Title";
+import InvestorCard from "@components/dashboard/InvestorCard";
+import DashboardLayout from "@/components/dashboard/DashboardLayout";
 
 const Page = () => {
   return (
