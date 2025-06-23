@@ -7,11 +7,12 @@ import { ArrowLeftIcon } from "lucide-react";
 
 import { Input } from "@components/ui/input";
 import { Button } from "@components/ui/button";
-import { Avatar, AvatarImage, AvatarFallback } from "@components/ui/avatar";
 import { getNameInitials } from "@/utils/getNameInitials";
-import Container from "@components/common/Container";
-import Title from "@components/common/Title";
 import { ChatMessageType, ChatPropsType } from "@/types";
+import { Avatar, AvatarImage, AvatarFallback } from "@components/ui/avatar";
+
+import Title from "@components/common/Title";
+import Container from "@components/common/Container";
 
 const Chat: React.FC<ChatPropsType> = ({ currentUser, otherUser }) => {
   const [messages, setMessages] = React.useState<ChatMessageType[]>([
@@ -51,34 +52,36 @@ const Chat: React.FC<ChatPropsType> = ({ currentUser, otherUser }) => {
 
   return (
     <Container className="mx-auto max-w-4xl p-6">
-      <div className="flex h-[600px] flex-col overflow-hidden rounded-xl bg-white shadow-lg">
-        <div className="flex items-center justify-between border-b bg-gray-50 p-4">
+      <div className="flex h-[600px] flex-col overflow-hidden rounded-xl shadow-lg">
+        <div className="border-border bg-secondary flex items-center justify-between border-b p-4">
           <div className="flex items-center space-x-3">
-            <Button asChild variant={"ghost"}>
+            <Button asChild variant={"ghost"} className="text-card-foreground">
               <Link href={`/dashboard/${currentUser.role}/`}>
-                <ArrowLeftIcon />
+                <ArrowLeftIcon className="text-current" />
               </Link>
             </Button>
 
             <Avatar>
               <AvatarImage src={otherUser.avatar} />
 
-              <AvatarFallback className="bg-primary/30">
+              <AvatarFallback>
                 <p>{getNameInitials(otherUser.name)}</p>
               </AvatarFallback>
             </Avatar>
 
             <div>
-              <Title level="h3" ariaLevel={3} className="font-semibold text-gray-900">
+              <Title level="h3" ariaLevel={3} className="text-card-foreground font-semibold">
                 {otherUser.name}
               </Title>
-              <p className="text-sm text-gray-500">{otherUser.startupName || otherUser.firm}</p>
+              <p className="text-muted-foreground text-sm">
+                {otherUser.startupName || otherUser.firm}
+              </p>
             </div>
           </div>
 
           <div className="flex items-center space-x-2">
             <div className="h-2 w-2 rounded-full bg-green-400" />
-            <span className="text-sm text-gray-500">Online</span>
+            <span className="text-card-foreground text-sm">Online</span>
           </div>
         </div>
 
@@ -90,13 +93,15 @@ const Chat: React.FC<ChatPropsType> = ({ currentUser, otherUser }) => {
             >
               <div
                 className={`max-w-xs rounded-lg px-4 py-2 lg:max-w-md ${
-                  message.isCurrentUser ? "bg-primary text-white" : "bg-gray-100 text-gray-900"
+                  message.isCurrentUser
+                    ? "bg-primary text-white"
+                    : "bg-secondary text-secondary-foreground"
                 }`}
               >
                 <p className="text-sm">{message.message}</p>
                 <small
                   className={`mt-1 text-xs ${
-                    message.isCurrentUser ? "text-blue-100" : "text-gray-500"
+                    message.isCurrentUser ? "text-blue-100" : "text-muted-foreground"
                   }`}
                 >
                   {"15:20"}
@@ -114,7 +119,7 @@ const Chat: React.FC<ChatPropsType> = ({ currentUser, otherUser }) => {
               onChange={(e) => setNewMessage(e.target.value)}
               onKeyDown={(e) => e.key === "Enter" && sendMessage()}
               placeholder="Type your message..."
-              className="focus:ring-primary flex-1 rounded-lg border border-gray-300 px-4 py-4 focus:border-transparent focus:ring-2"
+              className="focus:ring-primary flex-1 rounded-lg border border-border px-4 py-4 focus:border-transparent focus:ring-2"
             />
 
             <Button onClick={sendMessage} className="bg-primary px-6 py-4">
