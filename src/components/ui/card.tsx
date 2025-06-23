@@ -5,9 +5,9 @@ import { cn } from "@/lib/utils";
 import Title from "@components/common/Title";
 import { CardTitlePropsType } from "@/types";
 
-function Card({ className, ...props }: React.ComponentProps<"article">) {
+function Card({ className, ...props }: React.ComponentProps<"div">) {
   return (
-    <article
+    <div
       data-slot="card"
       className={cn(
         "bg-card text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm",
