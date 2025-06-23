@@ -24,7 +24,7 @@ const EntrepreneurProfile: React.FC<EntrepreneurProfilePropsType> = ({ entrepren
     <Button
       asChild
       variant={"ghost"}
-      className="text-primary hover:bg-primary/40 mb-6 transition-colors"
+      className="text-primary hover:bg-primary/30 hover:text-primary mb-6 transition-colors"
     >
       <Link href={"/dashboard/entrepreneur"}>
         <ArrowLeftIcon />
@@ -32,8 +32,8 @@ const EntrepreneurProfile: React.FC<EntrepreneurProfilePropsType> = ({ entrepren
       </Link>
     </Button>
 
-    <div className="overflow-hidden rounded-xl bg-white shadow-lg">
-      <div className="bg-gradient-to-r from-blue-600 to-purple-600 p-8 text-white">
+    <div className="bg-card overflow-hidden rounded-xl shadow-lg">
+      <div className="text-card-foreground bg-gradient-to-r from-blue-600 to-purple-600 p-8">
         <div className="flex flex-col items-start space-y-3 md:flex-row md:space-x-6">
           <Avatar className="size-24 shrink-0 border-4 border-white">
             <AvatarImage src={entrepreneur.avatar} alt={entrepreneur.name} />
@@ -41,7 +41,7 @@ const EntrepreneurProfile: React.FC<EntrepreneurProfilePropsType> = ({ entrepren
           </Avatar>
 
           <div className="flex-1">
-            <Title level="h1" ariaLevel={1} className="mb-2 text-3xl font-bold">
+            <Title level="h1" ariaLevel={1} className="mb-2 text-3xl font-bold text-white">
               {entrepreneur.name}
             </Title>
             <p className="mb-2 text-xl text-blue-100">{entrepreneur.startupName}</p>
@@ -80,74 +80,100 @@ const EntrepreneurProfile: React.FC<EntrepreneurProfilePropsType> = ({ entrepren
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
           <div className="space-y-8 lg:col-span-2">
             <div>
-              <Title level="h2" ariaLevel={2} className="mb-4 text-2xl font-bold text-gray-900">
+              <Title
+                level="h2"
+                ariaLevel={2}
+                className="text-card-foreground mb-4 text-2xl font-bold"
+              >
                 About
               </Title>
-              <p className="leading-relaxed text-gray-700">{entrepreneur.bio}</p>
+              <p className="text-muted-foreground leading-relaxed">{entrepreneur.bio}</p>
             </div>
 
             <div>
-              <Title level="h2" ariaLevel={2} className="mb-4 text-2xl font-bold text-gray-900">
+              <Title
+                level="h2"
+                ariaLevel={2}
+                className="text-card-foreground mb-4 text-2xl font-bold"
+              >
                 Startup Description
               </Title>
-              <p className="leading-relaxed text-gray-700">{entrepreneur.startupDescription}</p>
+              <p className="text-muted-foreground leading-relaxed">
+                {entrepreneur.startupDescription}
+              </p>
             </div>
 
             <div>
-              <Title level="h2" ariaLevel={2} className="mb-4 text-2xl font-bold text-gray-900">
+              <Title
+                level="h2"
+                ariaLevel={2}
+                className="text-card-foreground mb-4 text-2xl font-bold"
+              >
                 Pitch Deck
               </Title>
 
-              <div className="rounded-lg border-2 border-dashed border-gray-300 bg-gray-100 p-8 text-center">
-                <p className="text-gray-600">Pitch deck will be available upon request</p>
+              <div className="border-border bg-secondary rounded-lg border-2 border-dashed p-8 text-center">
+                <p className="text-muted-foreground">Pitch deck will be available upon request</p>
               </div>
             </div>
           </div>
 
           <div className="space-y-6">
-            <div className="rounded-lg bg-gray-50 p-6">
-              <Title level="h3" ariaLevel={3} className="mb-4 text-lg font-semibold text-gray-900">
+            <div className="bg-secondary rounded-lg p-6">
+              <Title
+                level="h3"
+                ariaLevel={3}
+                className="text-card-foreground mb-4 text-lg font-semibold"
+              >
                 Key Metrics
               </Title>
 
               <div className="space-y-3">
                 <div className="flex justify-between">
-                  <span className="text-gray-600">Funding Need:</span>
+                  <span className="text-muted-foreground">Funding Need:</span>
                   <span className="font-semibold text-green-600">{entrepreneur.fundingNeed}</span>
                 </div>
 
                 <div className="flex justify-between">
-                  <span className="text-gray-600">Team Size:</span>
-                  <span className="font-semibold">{entrepreneur.teamSize} people</span>
+                  <span className="text-muted-foreground">Team Size:</span>
+                  <span className="text-card-foreground font-semibold">
+                    {entrepreneur.teamSize} people
+                  </span>
                 </div>
 
                 <div className="flex justify-between">
-                  <span className="text-gray-600">Founded:</span>
-                  <span className="font-semibold">{entrepreneur.foundedYear}</span>
+                  <span className="text-muted-foreground">Founded:</span>
+                  <span className="text-card-foreground font-semibold">
+                    {entrepreneur.foundedYear}
+                  </span>
                 </div>
 
                 <div className="flex justify-between">
-                  <span className="text-gray-600">Industry:</span>
-                  <span className="font-semibold">{entrepreneur.industry}</span>
+                  <span className="text-muted-foreground">Industry:</span>
+                  <span className="text-card-foreground font-semibold">
+                    {entrepreneur.industry}
+                  </span>
                 </div>
               </div>
             </div>
 
-            <div className="rounded-lg bg-gray-50 p-6">
-              <h3 className="mb-4 text-lg font-semibold text-gray-900">Contact Information</h3>
+            <div className="bg-secondary rounded-lg p-6">
+              <h3 className="text-card-foreground mb-4 text-lg font-semibold">
+                Contact Information
+              </h3>
               <div className="space-y-3">
                 <a href="#" target="_blank" className="flex items-center space-x-2">
-                  <MailIcon className="h-4 w-4 text-gray-400" />
-                  <span className="text-sm text-gray-600">{entrepreneur.email}</span>
+                  <MailIcon className="text-muted-foreground h-4 w-4" />
+                  <span className="text-muted-foreground/50 text-sm">{entrepreneur.email}</span>
                 </a>
 
                 <div className="flex items-center space-x-2">
-                  <PhoneIcon className="h-4 w-4 text-gray-400" />
-                  <span className="text-sm text-gray-600">{entrepreneur.phone}</span>
+                  <PhoneIcon className="text-muted-foreground h-4 w-4" />
+                  <span className="text-muted-foreground/50 text-sm">{entrepreneur.phone}</span>
                 </div>
 
                 <a href={"#"} target="_blank" className="flex items-center space-x-2">
-                  <GlobeIcon className="h-4 w-4 text-gray-400" />
+                  <GlobeIcon className="text-muted-foreground h-4 w-4" />
                   <span className="text-primary text-sm">{entrepreneur.website}</span>
                 </a>
               </div>
