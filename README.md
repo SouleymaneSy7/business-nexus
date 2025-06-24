@@ -1,5 +1,7 @@
 # Business Nexus
 
+![Business Nexus Preview](/public/preview/preview.png)
+
 **Business Nexus** is a networking platform built to connect **entrepreneurs** and **investors**. This project is part of the developpersHub corporation frontend development internship challenge.
 
 > ⚠️ This README is a living document and will be updated progressively as the project evolves.
@@ -57,6 +59,7 @@ Step-by-step instructions (with screenshots planned) will be provided for common
 ### UI/UX Rationale
 
 - **Design Choices:** The interface uses Shadcn UI and MagicUI for a modern, accessible look. Tailwind CSS ensures consistent styling and responsive layouts. Color schemes and component choices prioritize readability and ease of use.
+
 - **User Experience:** User flows are designed for clarity—entrepreneurs and investors see only relevant features. Navigation is streamlined to minimize friction and support efficient interactions.
 
 ### Deployment and Setup Instructions
