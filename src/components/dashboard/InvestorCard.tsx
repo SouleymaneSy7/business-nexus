@@ -17,7 +17,7 @@ import { InvestorCardProps } from "@/types";
 
 const InvestorCard: React.FC<InvestorCardProps> = ({ investor }) => (
   <Card className="bg-card rounded-lg p-6 shadow-md">
-    <CardHeader className="flex items-start space-x-4 p-0">
+    <CardHeader className="flex flex-wrap items-start space-x-4 p-0 lg:flex-nowrap">
       <Avatar className="size-20 shrink-0">
         <AvatarImage src={investor.avatar} alt={investor.name} />
         <AvatarFallback>{getNameInitials(investor.name)}</AvatarFallback>
@@ -29,7 +29,7 @@ const InvestorCard: React.FC<InvestorCardProps> = ({ investor }) => (
         </CardTitle>
 
         <p className="text-primary font-medium">{investor.firm}</p>
-        <div className="text-muted-foreground mt-1 flex items-center space-x-4 text-sm">
+        <div className="text-muted-foreground mt-1 flex flex-wrap items-center space-x-4 text-sm lg:flex-nowrap">
           <span className="flex items-center">
             <MapPinIcon className="mr-1 h-4 w-4" />
             {investor.location}
@@ -67,13 +67,13 @@ const InvestorCard: React.FC<InvestorCardProps> = ({ investor }) => (
       </div>
     </CardContent>
 
-    <CardFooter className="border-border mt-4 flex flex-col flex-wrap items-start justify-start gap-3 border-t p-0 lg:flex-row lg:items-center lg:justify-between">
+    <CardFooter className="border-border mt-4 flex flex-col flex-wrap items-start justify-start gap-3 border-t p-0 lg:flex-row lg:flex-nowrap lg:items-center lg:justify-between">
       <div className="text-sm">
         <span className="text-muted-foreground">Investment Range: </span>
         <span className="font-semibold text-green-600">{investor.investmentRange}</span>
       </div>
 
-      <div className="flex space-x-2">
+      <div className="flex flex-wrap space-x-2 lg:flex-nowrap">
         <Button
           asChild
           className="text-primary bg-primary/30 hover:bg-primary/70 flex cursor-pointer items-center gap-2 rounded-lg px-3 py-1 text-sm transition-colors"
