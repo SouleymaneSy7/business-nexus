@@ -19,7 +19,7 @@ function Home() {
             <i>entrepreneurs</i>
           </span>{" "}
           <br />
-          <span className="text-4xl font-extrabold text-white/80 md:text-5xl">and</span>{" "}
+          and{" "}
           <span className="text-animate-colors bg-gradient-to-r from-indigo-500 via-green-500 to-pink-500 bg-clip-text text-7xl font-black whitespace-pre-wrap text-transparent italic drop-shadow-lg md:text-7xl">
             investors
           </span>
