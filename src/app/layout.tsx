@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Business Nexus",
     siteName: "Business Nexus",
-    url: "https://business-nexus.netlify.app",
+    url: "https://business-nexus-website.netlify.app",
     description: "Connect entrepreneurs and investors for seamless collaboration.",
     locale: "en_US",
     type: "website",
