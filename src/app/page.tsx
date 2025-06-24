@@ -21,7 +21,7 @@ function Home() {
           <br />
           and{" "}
           <span className="text-animate-colors bg-gradient-to-r from-indigo-500 via-green-500 to-pink-500 bg-clip-text text-7xl font-black whitespace-pre-wrap text-transparent italic drop-shadow-lg md:text-7xl">
-            investors
+            investors.
           </span>
         </Title>
 
@@ -32,10 +32,11 @@ function Home() {
         </p>
 
         <div className="mt-4 flex items-center justify-center gap-4">
-          <Button asChild>
+          <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90 px-6 py-4.5">
             <Link href="/login">Login </Link>
           </Button>
-          <Button asChild>
+
+          <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90 px-6 py-4.5">
             <Link href="/dashboard/entrepreneur">
               Go to Dashboard
               <ChevronRightIcon className="ml-2 h-4 w-4" />
@@ -44,7 +45,7 @@ function Home() {
         </div>
       </Container>
 
-      <Ripple />
+      <Ripple mainCircleSize={300} numCircles={14} />
     </div>
   );
 }
