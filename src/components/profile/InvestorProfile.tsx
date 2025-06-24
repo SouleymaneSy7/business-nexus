@@ -19,6 +19,7 @@ import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import List from "@components/common/List";
 import Title from "@components/common/Title";
 import Container from "@components/common/Container";
+import VisuallyHidden from "@components/common/VisuallyHidden";
 
 const InvestorProfile: React.FC<InvestorProfilePropsType> = ({ investor }) => (
   <Container className="mx-auto max-w-4xl p-6">
@@ -27,13 +28,14 @@ const InvestorProfile: React.FC<InvestorProfilePropsType> = ({ investor }) => (
       variant={"ghost"}
       className="text-primary hover:text-primary hover:bg-primary/30 mb-6 px-4 py-2 transition-colors"
     >
-      <Link href={"/dashboard/investor"}>
+      <Link href={"/dashboard/investor"} title="Go back to dashboard">
         <ArrowLeftIcon />
         Back to Dashboard
+        <VisuallyHidden>Go back to dashboard</VisuallyHidden>
       </Link>
     </Button>
 
-    <div className="overflow-hidden rounded-xl bg-card shadow-lg">
+    <div className="bg-card overflow-hidden rounded-xl shadow-lg">
       <div className="bg-gradient-to-r from-green-600 to-blue-600 p-8 text-white">
         <div className="flex items-start space-x-6">
           <Avatar className="size-24 shrink-0 border-4 border-white">
@@ -83,14 +85,22 @@ const InvestorProfile: React.FC<InvestorProfilePropsType> = ({ investor }) => (
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
           <div className="space-y-8 lg:col-span-2">
             <div>
-              <Title level="h2" ariaLevel={2} className="mb-4 text-2xl font-bold text-card-foreground">
+              <Title
+                level="h2"
+                ariaLevel={2}
+                className="text-card-foreground mb-4 text-2xl font-bold"
+              >
                 About
               </Title>
-              <p className="leading-relaxed text-muted-foreground">{investor.bio}</p>
+              <p className="text-muted-foreground leading-relaxed">{investor.bio}</p>
             </div>
 
             <div>
-              <Title level="h2" ariaLevel={2} className="mb-4 text-2xl font-bold text-card-foreground">
+              <Title
+                level="h2"
+                ariaLevel={2}
+                className="text-card-foreground mb-4 text-2xl font-bold"
+              >
                 Investment Interests
               </Title>
 
@@ -108,7 +118,11 @@ const InvestorProfile: React.FC<InvestorProfilePropsType> = ({ investor }) => (
             </div>
 
             <div>
-              <Title level="h2" ariaLevel={2} className="mb-4 text-2xl font-bold text-card-foreground">
+              <Title
+                level="h2"
+                ariaLevel={2}
+                className="text-card-foreground mb-4 text-2xl font-bold"
+              >
                 Companies
               </Title>
 
@@ -117,8 +131,8 @@ const InvestorProfile: React.FC<InvestorProfilePropsType> = ({ investor }) => (
                 className="grid grid-cols-2 gap-4"
                 items={investor.portfolioCompanies}
                 renderItem={(item) => (
-                  <div key={item} className="rounded-lg bg-secondary p-4 text-center">
-                    <div className="text-sm font-medium text-secondary-foreground">{item}</div>
+                  <div key={item} className="bg-secondary rounded-lg p-4 text-center">
+                    <div className="text-secondary-foreground text-sm font-medium">{item}</div>
                   </div>
                 )}
               />
@@ -126,8 +140,12 @@ const InvestorProfile: React.FC<InvestorProfilePropsType> = ({ investor }) => (
           </div>
 
           <div className="space-y-6">
-            <div className="rounded-lg bg-secondary p-6">
-              <Title level="h3" ariaLevel={3} className="mb-4 text-lg font-semibold text-card-foreground">
+            <div className="bg-secondary rounded-lg p-6">
+              <Title
+                level="h3"
+                ariaLevel={3}
+                className="text-card-foreground mb-4 text-lg font-semibold"
+              >
                 Investment Details
               </Title>
 
@@ -149,24 +167,28 @@ const InvestorProfile: React.FC<InvestorProfilePropsType> = ({ investor }) => (
               </div>
             </div>
 
-            <div className="rounded-lg bg-secondary p-6">
-              <Title level="h3" ariaLevel={3} className="mb-4 text-lg font-semibold text-card-foreground">
+            <div className="bg-secondary rounded-lg p-6">
+              <Title
+                level="h3"
+                ariaLevel={3}
+                className="text-card-foreground mb-4 text-lg font-semibold"
+              >
                 Contact Information
               </Title>
 
               <div className="space-y-3">
                 <div className="flex items-center space-x-2">
-                  <MailIcon className="h-4 w-4 text-muted-foreground" />
-                  <span className="text-sm text-muted-foreground/50">{investor.email}</span>
+                  <MailIcon className="text-muted-foreground h-4 w-4" />
+                  <span className="text-muted-foreground/50 text-sm">{investor.email}</span>
                 </div>
 
                 <div className="flex items-center space-x-2">
-                  <PhoneIcon className="h-4 w-4 text-muted-foreground" />
-                  <span className="text-sm text-muted-foreground/50">{investor.phone}</span>
+                  <PhoneIcon className="text-muted-foreground h-4 w-4" />
+                  <span className="text-muted-foreground/50 text-sm">{investor.phone}</span>
                 </div>
 
                 <div className="flex items-center space-x-2">
-                  <GlobeIcon className="h-4 w-4 text-muted-foreground" />
+                  <GlobeIcon className="text-muted-foreground h-4 w-4" />
                   <span className="text-primary text-sm">{investor.website}</span>
                 </div>
               </div>

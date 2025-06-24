@@ -18,6 +18,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@components/ui/avatar";
 
 import Title from "@components/common/Title";
 import Container from "@components/common/Container";
+import VisuallyHidden from "@components/common/VisuallyHidden";
 
 const EntrepreneurProfile: React.FC<EntrepreneurProfilePropsType> = ({ entrepreneur }) => (
   <Container className="mx-auto max-w-4xl p-6">
@@ -26,9 +27,10 @@ const EntrepreneurProfile: React.FC<EntrepreneurProfilePropsType> = ({ entrepren
       variant={"ghost"}
       className="text-primary hover:bg-primary/30 hover:text-primary mb-6 transition-colors"
     >
-      <Link href={"/dashboard/entrepreneur"}>
+      <Link href={"/dashboard/entrepreneur"} title="Go back to dashboard">
         <ArrowLeftIcon />
         Back to Dashboard
+        <VisuallyHidden>Go back to dashboard</VisuallyHidden>
       </Link>
     </Button>
 
@@ -158,9 +160,14 @@ const EntrepreneurProfile: React.FC<EntrepreneurProfilePropsType> = ({ entrepren
             </div>
 
             <div className="bg-secondary rounded-lg p-6">
-              <h3 className="text-card-foreground mb-4 text-lg font-semibold">
+              <Title
+                level="h3"
+                ariaLevel={3}
+                className="text-card-foreground mb-4 text-lg font-semibold"
+              >
                 Contact Information
-              </h3>
+              </Title>
+
               <div className="space-y-3">
                 <a href="#" target="_blank" className="flex items-center space-x-2">
                   <MailIcon className="text-muted-foreground h-4 w-4" />
