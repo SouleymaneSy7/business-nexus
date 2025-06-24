@@ -79,7 +79,7 @@ const LoginForm = () => {
         <CardContent>
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="grid gap-6">
-              <div className="flex w-full items-center justify-center gap-3">
+              <div className="flex w-full flex-wrap items-center justify-center gap-3">
                 <Button variant="outline" className="grow cursor-pointer">
                   <GoogleIcon />
                   Login with Google
@@ -108,6 +108,7 @@ const LoginForm = () => {
                     disabled={isLoading}
                     {...register("email")}
                     placeholder="email@example.com"
+                    className="w-full"
                   />
                   {errors.email && (
                     <small className="text-sm text-red-500">{errors.email.message}</small>
@@ -115,7 +116,7 @@ const LoginForm = () => {
                 </div>
 
                 <div className="grid gap-3">
-                  <div className="flex items-center">
+                  <div className="flex items-center flex-wrap gap-2">
                     <Label htmlFor="password">Password</Label>
                     <a
                       href="#"
@@ -132,6 +133,7 @@ const LoginForm = () => {
                     disabled={isLoading}
                     placeholder="••••••••"
                     {...register("password")}
+                    className="w-full"
                   />
 
                   {errors.password && (

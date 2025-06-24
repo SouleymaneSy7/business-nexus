@@ -146,7 +146,7 @@ const RegisterForm = () => {
               )}
             </div>
 
-            <div className="item-center flex w-full gap-4">
+            <div className="item-center flex w-full gap-4 flex-wrap lg:flex-nowrap">
               <div className="w-1/2 space-y-2">
                 <Label htmlFor={roleId}>I am a</Label>
 
