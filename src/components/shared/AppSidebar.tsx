@@ -26,7 +26,8 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const user = {
     name: "Souleymane",
     email: "souleymane@example.com",
-    avatar: "/avatars/shadcn.jpg",
+    avatar:
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=faces",
   };
 
   const navItems = [
