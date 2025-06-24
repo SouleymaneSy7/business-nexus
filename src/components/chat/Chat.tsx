@@ -13,6 +13,7 @@ import { Avatar, AvatarImage, AvatarFallback } from "@components/ui/avatar";
 
 import Title from "@components/common/Title";
 import Container from "@components/common/Container";
+import VisuallyHidden from "@components/common/VisuallyHidden";
 
 const Chat: React.FC<ChatPropsType> = ({ currentUser, otherUser }) => {
   const [messages, setMessages] = React.useState<ChatMessageType[]>([
@@ -56,13 +57,14 @@ const Chat: React.FC<ChatPropsType> = ({ currentUser, otherUser }) => {
         <div className="border-border bg-secondary flex items-center justify-between border-b p-4">
           <div className="flex items-center space-x-3">
             <Button asChild variant={"ghost"} className="text-card-foreground">
-              <Link href={`/dashboard/${currentUser.role}/`}>
+              <Link href={`/dashboard/${currentUser.role}/`} title="Go back to dashboard">
                 <ArrowLeftIcon className="text-current" />
+                <VisuallyHidden>Go back to dashboard</VisuallyHidden>
               </Link>
             </Button>
 
             <Avatar>
-              <AvatarImage src={otherUser.avatar} />
+              <AvatarImage src={otherUser.avatar} alt={otherUser.name} />
 
               <AvatarFallback>
                 <p>{getNameInitials(otherUser.name)}</p>
@@ -119,7 +121,7 @@ const Chat: React.FC<ChatPropsType> = ({ currentUser, otherUser }) => {
               onChange={(e) => setNewMessage(e.target.value)}
               onKeyDown={(e) => e.key === "Enter" && sendMessage()}
               placeholder="Type your message..."
-              className="focus:ring-primary flex-1 rounded-lg border border-border px-4 py-4 focus:border-transparent focus:ring-2"
+              className="focus:ring-primary border-border flex-1 rounded-lg border px-4 py-4 focus:border-transparent focus:ring-2"
             />
 
             <Button onClick={sendMessage} className="bg-primary px-6 py-4">
