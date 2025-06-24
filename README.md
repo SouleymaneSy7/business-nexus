@@ -2,9 +2,11 @@
 
 ![Business Nexus Preview](/public/preview/preview.png)
 
-**Business Nexus** is a networking platform built to connect **entrepreneurs** and **investors**. This project is part of the developpersHub corporation frontend development internship challenge.
-
 > ⚠️ This README is a living document and will be updated progressively as the project evolves.
+
+---
+
+**Business Nexus** is a networking platform built to connect **entrepreneurs** and **investors**. This project is part of the developpersHub corporation frontend development internship challenge.
 
 ---
 
