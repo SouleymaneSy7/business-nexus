@@ -10,7 +10,6 @@ import { Avatar, AvatarFallback, AvatarImage } from "@components/ui/avatar";
 import { Card, CardDescription, CardFooter, CardHeader } from "@components/ui/card";
 import { CollaborationRequestPropsType } from "@/types";
 
-
 const CollaborationRequestCard: React.FC<CollaborationRequestPropsType> = ({ userRequests }) => {
   const investor = mockInvestors.find((investor) => investor.id === userRequests.investorId);
 
@@ -20,8 +19,8 @@ const CollaborationRequestCard: React.FC<CollaborationRequestPropsType> = ({ use
 
   return (
     <Card className="bg-card rounded-lg p-6 shadow-md">
-      <CardHeader className="flex items-start justify-between p-0">
-        <div className="flex items-start gap-6">
+      <CardHeader className="flex flex-wrap items-start justify-between p-0">
+        <div className="flex flex-wrap items-start gap-6">
           <Avatar className="size-20 shrink-0">
             <AvatarImage src={investor?.avatar} alt={investor?.name} />
             <AvatarFallback>
@@ -38,7 +37,7 @@ const CollaborationRequestCard: React.FC<CollaborationRequestPropsType> = ({ use
               {investor?.name}
             </Title>
             <p className="text-primary text-sm font-medium">{investor?.firm}</p>
-            <div className="text-muted-foreground mt-1 flex items-center space-x-4 text-sm">
+            <div className="text-muted-foreground mt-1 flex flex-wrap items-center space-x-4 text-sm">
               <span className="flex items-center">
                 <MapPinIcon className="mr-1 h-4 w-4" />
                 {investor?.location}
