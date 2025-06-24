@@ -6,7 +6,7 @@
 
 ---
 
-## Project Goal
+## Project Goals
 
 Build a full-featured web application where two types of users can:
 
@@ -18,32 +18,56 @@ Build a full-featured web application where two types of users can:
 
 ---
 
-## Tech Stack (Initial Setup)
+## Tech Stack
 
-| Layer          | Tech                           |
-| -------------- | ------------------------------ |
-| Framework      | Next.js 15 latest (App Router) |
-| Language       | TypeScript                     |
-| Styling        | Tailwind CSS + Shadcn/UI       |
-| Forms          | React Hook Form + Zod          |
-| Authentication | Better-Auth                    |
-| Database       | Supabase (PostgreSQL)          |
-| ORM            | Drizzle                        |
-| Deployment     | Vercel                         |
+| Layer          | Tech                                       |
+| -------------- | ------------------------------------------ |
+| Framework      | Next.js 15 (App Router)                    |
+| Language       | TypeScript                                 |
+| Styling        | Tailwind CSS, Shadcn UI, MagicUI, Radix UI |
+| Forms          | React Hook Form, Zod                       |
+| Linting/Format | ESLint, Prettier                           |
+| Deployment     | Netlify                                    |
 
 ---
 
-## Features (Work in Progress)
+## Roadmap Highlights
 
-- [x] Project scaffold with folder structure
-- [ ] Authentication with role selection (Investor or Entrepreneur) (upcoming)
-- [ ] Protected routes using Next.js middleware (upcoming)
-- [ ] Role-based dashboards and layouts (upcoming)
-- [ ] Public user profile pages (upcoming)
-- [ ] Real-time chat system using Supabase channels (upcoming)
-- [ ] Notifications system (upcoming)
-- [ ] Collaboration request management (upcoming)
-- [ ] Enhanced filtering and search (upcoming)
+- [x] [Week 1] Setup + Auth + Basic Layouts
+- [x] [Week 2] Dashboards + Profiles + Requests
+- [x] [Week 3] Real-time Chat + Polish + Demo Prep
+
+---
+
+## Feature Details and Usage Guides
+
+- **Authentication:** Secure registration and login for Investors and Entrepreneurs, with role-based access control. Users select their role during signup and are directed to the appropriate dashboard after login.
+
+- **Dashboards:** Each user type has a dedicated dashboard displaying relevant actions, such as  managing profiles, and accessing chat.
+
+- **Profiles:** Publicly viewable profiles for both roles, allowing users to showcase their background, interests, and projects. Profiles can be browsed by all users.
+
+- **Collaboration Requests:** Users can send and receive requests to connect or collaborate. Requests are managed from the dashboard, with options to accept or decline.
+
+- **Real-time Chat:** Simulated or actual real-time messaging between users, accessible from the dashboard or profile pages.
+
+**Usage Guides:**  
+Step-by-step instructions (with screenshots planned) will be provided for common tasks such as signing up, editing profiles, sending requests, and starting chats. These guides will help both new users and contributors understand the platform’s workflows.
+
+### UI/UX Rationale
+
+- **Design Choices:** The interface uses Shadcn UI and MagicUI for a modern, accessible look. Tailwind CSS ensures consistent styling and responsive layouts. Color schemes and component choices prioritize readability and ease of use.
+- **User Experience:** User flows are designed for clarity—entrepreneurs and investors see only relevant features. Navigation is streamlined to minimize friction and support efficient interactions.
+
+### Deployment and Setup Instructions
+
+- **Deployment:** To deploy on Netlify, push your code to GitHub and connect the repository to Netlify. Use `pnpm build` as the build command and `pnpm dev` for preview.
+
+- **Setup:**  
+  1. Clone the repository: `git clone https://github.com/SouleymaneSy7/business-nexus.git`
+  2. Install dependencies: `pnpm install`
+  3. Start the development server: `pnpm dev`
+  4. For troubleshooting, check the project’s issues or open a new one for support.
 
 ---
 
@@ -52,41 +76,50 @@ Build a full-featured web application where two types of users can:
 ```md
 /business-nexus
 ├── app/
-│ ├── layout.tsx
-│ ├── page.tsx
-| ├── auth/
-│ │ ├── login/page.tsx
-│ │ └── register/page.tsx│
-│ ├── dashboard/
-│ │ ├── investor/page.tsx
-│ │ └── entrepreneur/page.tsx
-│ ├── profile/
-│ │ ├── investor/[id]/page.tsx
-│ │ └── entrepreneur/[id]/page.tsx
-│ └── chat/[userId]/page.tsx
+│   ├── layout.tsx
+│   ├── page.tsx
+│   ├── global.css
+│   ├── (auth)/
+│   │   ├── login/
+│   │   │   └── page.tsx
+│   │   └── register/
+│   │       └── page.tsx
+│   ├── dashboard/
+│   │   ├── investor/
+│   │   │   └── page.tsx
+│   │   └── entrepreneur/
+│   │       └── page.tsx
+│   ├── profile/
+│   │   ├── investor/
+│   │   │   └── [id]/
+│   │   │       └── page.tsx
+│   │   └── entrepreneur/
+│   │       └── [id]/
+│   │           └── page.tsx
+│   └── chat/
+│       └── [userId]/
+│           └── page.tsx
 ├── components/
-│ ├── ui/ (Shadcn)
-│ ├── auth/
-│ ├── layouts/
-│ └── shared/
-├── db/
-│ ├── schema/
-│ │ ├── auth-schema.ts
-│ │ └── data-schema.ts
-│ └── drizzle.ts
+│   ├── ui/           # Shadcn UI components
+│   ├── magicui/      # MagicUI components
+│   ├── auth/
+│   ├── chat/
+│   ├── common/
+│   ├── dashboard/
+│   ├── profile/
+│   └── shared/
 ├── hooks/
-│ ├── useAuth.ts
-│ └── useUser.ts
+│   └── use-mobile.ts
+├── icons/
+│   └── Icon.component.tsx
 ├── lib/
-│ ├── auth-client.ts
-│ ├── auth.ts
-│ ├── supabaseClient.ts
-│ └── utils.ts
+│   ├── mock-data.ts
+│   └── utils.ts
 ├── types/
-│ ├── index.ts
-│ └── schemaTypes.ts
-├── middleware.ts
-├── drizzle.config.ts
+│   └── index.ts
+├── utils/
+│   └── getNameInitials.ts
+├── components.json
 ├── next.config.ts
 └── ...
 ```
@@ -96,32 +129,22 @@ Build a full-featured web application where two types of users can:
 ## Local Development
 
 ```bash
-# Clone and install dependencies
+# Clone the project
+git clone https://github.com/SouleymaneSy7/business-nexus.git
+
+# install dependencies
 pnpm install
 
-# Run dev server
-pnpm run dev
+# Start the development server
+pnpm dev
+
+# Build the project for production
+pnpm build
 ```
 
-`
-
 ---
 
-## Roadmap Highlights
+## Stay Tuned
 
-- [Week 1] Setup + Auth + Basic Layouts
-- [Week 2] Dashboards + Profiles + Requests
-- [Week 3] Real-time Chat + Polish + Demo Prep
-
----
-
-## Contributing & Updating
-
-As the project evolves, we’ll continue updating this README with:
-
-- Database schema changes
-- Feature explanations
-- UI/UX decisions
-- Deployment instructions
-
-Stay tuned ✨
+More features, improvements, and detailed guides are on the way.  
+Check back regularly for updates as Business Nexus evolves!
