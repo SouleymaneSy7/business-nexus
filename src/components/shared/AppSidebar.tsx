@@ -46,11 +46,11 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
     <Sidebar variant="floating" {...props}>
       <SidebarHeader>
         <SidebarMenuButton size="lg" asChild>
-          <a href="#">
+          <Link href="/">
             <Title level="h1" ariaLevel={1} className="text-primary text-2xl font-semibold">
               Business Nexus
             </Title>
-          </a>
+          </Link>
         </SidebarMenuButton>
       </SidebarHeader>
 

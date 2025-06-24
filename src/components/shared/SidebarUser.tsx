@@ -1,5 +1,7 @@
 "use client";
 
+import * as React from "react";
+
 import {
   BadgeCheckIcon,
   BellIcon,
@@ -25,17 +27,17 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar";
 
-export function SidebarUser({
-  user,
-}: {
+type SidebarUserPropsType = {
   user: {
     name: string;
     email: string;
     avatar: string;
   };
-}) {
+};
+
+export const SidebarUser: React.FC<SidebarUserPropsType> = ({ user }) => {
   const { isMobile } = useSidebar();
-  
+
   return (
     <SidebarMenu>
       <SidebarMenuItem>
@@ -69,7 +71,7 @@ export function SidebarUser({
               <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
                 <Avatar className="h-8 w-8 rounded-lg">
                   <AvatarImage src={user.avatar} alt={user.name} />
-                  <AvatarFallback className="rounded-lg">CN</AvatarFallback>
+                  <AvatarFallback className="rounded-lg">SS</AvatarFallback>
                 </Avatar>
 
                 <div className="grid flex-1 text-left text-sm leading-tight">
@@ -108,6 +110,6 @@ export function SidebarUser({
       </SidebarMenuItem>
     </SidebarMenu>
   );
-}
+};
 
 export default SidebarUser;

@@ -6,6 +6,7 @@ import { ArrowLeftIcon } from "lucide-react";
 import { Button } from "@components/ui/button";
 import Container from "@components/common/Container";
 import Title from "@components/common/Title";
+import VisuallyHidden from "@components/common/VisuallyHidden";
 
 export default function Custom404() {
   return (
@@ -30,9 +31,14 @@ export default function Custom404() {
 
           <div className="mt-10 flex items-center justify-center gap-x-6">
             <Button asChild>
-              <Link href="/" className="flex items-center gap-3 text-balance">
+              <Link
+                href="/"
+                title="Go back to Homepage"
+                className="flex items-center gap-3 text-balance"
+              >
                 <ArrowLeftIcon />
                 Go back home
+                <VisuallyHidden>Go back to Homepage</VisuallyHidden>
               </Link>
             </Button>
           </div>
