@@ -45,13 +45,13 @@ const EntrepreneurCard: React.FC<EntrepreneurCardPropsType> = ({ entrepreneur })
         {entrepreneur.startupDescription}
       </CardDescription>
 
-      <CardFooter className="border-border mt-4 flex items-center justify-between border-t px-0 pt-4 flex-wrap">
+      <CardFooter className="border-border mt-4 flex items-center justify-between border-t px-0 pt-4 flex-wrap gap-3">
         <div className="text-sm">
           <span className="text-muted-foreground">Funding Need: </span>
           <span className="font-semibold text-green-600">{entrepreneur.fundingNeed}</span>
         </div>
 
-        <div className="flex space-x-2 items-center flex-wrap">
+        <div className="flex space-x-2 items-center flex-wrap gap-3">
           <Button
             asChild
             className="bg-primary/30 text-primary hover:bg-primary/40 flex cursor-pointer items-center rounded-lg px-3 py-1 text-sm transition-colors"

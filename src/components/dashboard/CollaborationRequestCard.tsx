@@ -19,7 +19,7 @@ const CollaborationRequestCard: React.FC<CollaborationRequestPropsType> = ({ use
 
   return (
     <Card className="bg-card rounded-lg p-6 shadow-md">
-      <CardHeader className="flex flex-wrap items-start justify-between p-0">
+      <CardHeader className="flex flex-wrap items-start justify-between p-0 gap-3 lg:flex-nowrap">
         <div className="flex flex-wrap items-start gap-6">
           <Avatar className="size-20 shrink-0">
             <AvatarImage src={investor?.avatar} alt={investor?.name} />

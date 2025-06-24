@@ -73,7 +73,7 @@ const InvestorCard: React.FC<InvestorCardProps> = ({ investor }) => (
         <span className="font-semibold text-green-600">{investor.investmentRange}</span>
       </div>
 
-      <div className="flex flex-wrap space-x-2 lg:flex-nowrap">
+      <div className="flex flex-wrap gap-3 space-x-2 lg:flex-nowrap">
         <Button
           asChild
           className="text-primary bg-primary/30 hover:bg-primary/70 flex cursor-pointer items-center gap-2 rounded-lg px-3 py-1 text-sm transition-colors"
