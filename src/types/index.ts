@@ -126,3 +126,26 @@ export type ChatMessageType = {
   timestamp: string;
   isCurrentUser: boolean;
 };
+
+export type CollaborationRequestPropsType = {
+  userRequests: {
+    id: number;
+    investorId: number;
+    entrepreneurId: number;
+    status: string;
+    message: string;
+    createdAt: string;
+  };
+};
+
+export interface DashboardLayoutPropsType {
+  children: React.ReactNode;
+}
+
+export type SidebarUserPropsType = {
+  user: {
+    name: string;
+    email: string;
+    avatar: string;
+  };
+};

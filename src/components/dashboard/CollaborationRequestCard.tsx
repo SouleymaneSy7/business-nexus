@@ -8,17 +8,8 @@ import { mockInvestors } from "@/lib/mock-data";
 import { AwardIcon, MapPinIcon, ReplyIcon } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@components/ui/avatar";
 import { Card, CardDescription, CardFooter, CardHeader } from "@components/ui/card";
+import { CollaborationRequestPropsType } from "@/types";
 
-type CollaborationRequestPropsType = {
-  userRequests: {
-    id: number;
-    investorId: number;
-    entrepreneurId: number;
-    status: string;
-    message: string;
-    createdAt: string;
-  };
-};
 
 const CollaborationRequestCard: React.FC<CollaborationRequestPropsType> = ({ userRequests }) => {
   const investor = mockInvestors.find((investor) => investor.id === userRequests.investorId);

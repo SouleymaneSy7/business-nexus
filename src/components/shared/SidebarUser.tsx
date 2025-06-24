@@ -26,14 +26,7 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar";
-
-type SidebarUserPropsType = {
-  user: {
-    name: string;
-    email: string;
-    avatar: string;
-  };
-};
+import { SidebarUserPropsType } from "@/types";
 
 export const SidebarUser: React.FC<SidebarUserPropsType> = ({ user }) => {
   const { isMobile } = useSidebar();

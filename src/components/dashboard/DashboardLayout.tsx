@@ -1,14 +1,14 @@
 import * as React from "react";
 
-import { SidebarInset, SidebarProvider, SidebarTrigger } from "@components/ui/sidebar";
+import { DashboardLayoutPropsType } from "@/types";
 import { AppSidebar } from "@components/shared/AppSidebar";
+import { SidebarInset, SidebarProvider, SidebarTrigger } from "@components/ui/sidebar";
+
 import Container from "@components/common/Container";
 
-interface DashboardLayoutProps {
-  children: React.ReactNode;
-}
 
-const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
+
+const DashboardLayout: React.FC<DashboardLayoutPropsType> = ({ children }) => {
   return (
     <React.Fragment>
       <SidebarProvider>
