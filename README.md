@@ -43,17 +43,31 @@ Build a full-featured web application where two types of users can:
 
 ---
 
+## Performance
+
+- Lighthouse Score:
+  - Performance: 95/100
+  - Accessibility: 100/100
+  - Best Practices: 100/100
+  - SEO: 100/100
+
+![Lighthouse Preview](./public/preview/lighthouse-preview.jpg)
+
+---
+
 ## Feature Details and Usage Guides
 
-- **Authentication:** Secure registration and login for Investors and Entrepreneurs, with role-based access control. Users select their role during signup and are directed to the appropriate dashboard after login.
+> **Note:** All features described below are implemented on the frontend only. There is no real authentication or backend database — data is simulated and managed locally within the application using mock data.
 
-- **Dashboards:** Each user type has a dedicated dashboard displaying relevant actions, such as  managing profiles, and accessing chat.
+- **Authentication:** Simulated registration and login for Investors and Entrepreneurs, with role-based access control. Users select their role during signup and are directed to the appropriate dashboard after login.
+
+- **Dashboards:** Each user type has a dedicated dashboard displaying relevant actions, such as managing profiles and accessing chat.
 
 - **Profiles:** Publicly viewable profiles for both roles, allowing users to showcase their background, interests, and projects. Profiles can be browsed by all users.
 
 - **Collaboration Requests:** Users can send and receive requests to connect or collaborate. Requests are managed from the dashboard, with options to accept or decline.
 
-- **Real-time Chat:** Simulated or actual real-time messaging between users, accessible from the dashboard or profile pages.
+- **Real-time Chat:** Simulated real-time messaging between users, accessible from the dashboard or profile pages.
 
 **Usage Guides:**  
 Step-by-step instructions (with screenshots planned) will be provided for common tasks such as signing up, editing profiles, sending requests, and starting chats. These guides will help both new users and contributors understand the platform’s workflows.
@@ -75,16 +89,6 @@ Step-by-step instructions (with screenshots planned) will be provided for common
   4. For troubleshooting, check the project’s issues or open a new one for support.
 
 ---
-
-## Performance
-
-- Lighthouse Score:
-  - Performance: 95/100
-  - Accessibility: 100/100
-  - Best Practices: 100/100
-  - SEO: 100/100
-
-![Lighthouse Preview](./public/preview/lighthouse-preview.jpg)
 
 ## Project Structure
 
