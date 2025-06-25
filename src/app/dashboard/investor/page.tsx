@@ -30,7 +30,7 @@ const Page = () => {
           <Title
             level="h2"
             ariaLevel={2}
-            className="text-card-foreground mb-4 text-chart-3xl font-semibold"
+            className="text-card-foreground mb-4 text-3xl font-semibold"
           >
             Discover Investors
           </Title>
