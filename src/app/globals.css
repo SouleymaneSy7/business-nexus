@@ -180,7 +180,7 @@
 
   .relative-grid {
     --min: 448px;
-    --gap: 1rem;
+    --gap: 1.5rem;
 
     display: grid;
     gap: var(--gap);

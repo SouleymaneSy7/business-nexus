@@ -25,7 +25,7 @@ const Page = () => {
           </Title>
 
           <List
-            className="grid grid-cols-1 gap-6 md:grid-cols-2"
+            className="relative-grid"
             items={mockInvestors}
             renderItem={(investor) => <InvestorCard key={investor.id} investor={investor} />}
           />
