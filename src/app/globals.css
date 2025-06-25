@@ -178,6 +178,15 @@
     overflow: hidden;
   }
 
+  .relative-grid {
+    --min: 448px;
+    --gap: 1rem;
+
+    display: grid;
+    gap: var(--gap);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--min)), 1fr));
+  }
+
   .text-animate-colors {
     background-size: 200%;
     -webkit-animation: text-animate 10s ease infinite;
