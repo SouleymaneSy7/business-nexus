@@ -21,8 +21,11 @@ import Title from "@components/common/Title";
 import SidebarUser from "./SidebarUser";
 import { ThemeToggle } from "./ThemeToggle";
 import Container from "@components/common/Container";
+import { useRouter } from "next/router";
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+  const router = useRouter();
+
   const user = {
     name: "Souleymane",
     email: "souleymane@example.com",
@@ -46,7 +49,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
     <Sidebar variant="floating" {...props}>
       <SidebarHeader>
-        <SidebarMenuButton size="lg" asChild>
+        <SidebarMenuButton size="lg" asChild variant={"default"}>
           <Link href="/">
             <Title level="h1" ariaLevel={1} className="text-primary text-2xl font-semibold">
               Business Nexus
@@ -64,8 +67,8 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                 renderItem={(item) => {
                   return (
                     <SidebarMenuItem key={item.title}>
-                      <SidebarMenuButton asChild>
-                        <Link href={item.url}>
+                      <SidebarMenuButton asChild isActive={router.pathname === item.url}>
+                        <Link href={item.url} title={item.title}>
                           <item.icon />
                           <span>{item.title}</span>
                         </Link>
