@@ -9,6 +9,7 @@ import { AwardIcon, MapPinIcon, ReplyIcon } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@components/ui/avatar";
 import { Card, CardDescription, CardFooter, CardHeader } from "@components/ui/card";
 import { CollaborationRequestPropsType } from "@/types";
+import DateFormat from "@components/shared/DateFormat";
 
 const CollaborationRequestCard: React.FC<CollaborationRequestPropsType> = ({ userRequests }) => {
   const investor = mockInvestors.find((investor) => investor.id === userRequests.investorId);
@@ -19,7 +20,7 @@ const CollaborationRequestCard: React.FC<CollaborationRequestPropsType> = ({ use
 
   return (
     <Card className="bg-card rounded-lg p-6 shadow-md">
-      <CardHeader className="flex flex-wrap items-start justify-between p-0 gap-3 lg:flex-nowrap">
+      <CardHeader className="flex flex-wrap items-start justify-between gap-3 p-0 lg:flex-nowrap">
         <div className="flex flex-wrap items-start gap-6">
           <Avatar className="size-20 shrink-0">
             <AvatarImage src={investor?.avatar} alt={investor?.name} />
@@ -56,8 +57,8 @@ const CollaborationRequestCard: React.FC<CollaborationRequestPropsType> = ({ use
             userRequests.status === "pending"
               ? "bg-yellow-100 text-yellow-800"
               : userRequests.status === "rejected"
-              ? "bg-red-100 text-red-800"
-              : "bg-green-100 text-green-800"
+                ? "bg-red-100 text-red-800"
+                : "bg-green-100 text-green-800"
           }`}
         >
           {userRequests.status}
@@ -68,7 +69,11 @@ const CollaborationRequestCard: React.FC<CollaborationRequestPropsType> = ({ use
         {userRequests.message}
       </CardDescription>
 
-      <CardFooter className="flex items-end justify-end p-0">
+      <CardFooter className="flex items-center justify-between p-0">
+        <div>
+          <DateFormat dateString={userRequests.createdAt} />
+        </div>
+
         <Button
           asChild
           className="text-primary bg-primary/30 hover:bg-primary/70 flex cursor-pointer items-center gap-2 rounded-lg px-3 py-4 text-sm transition-colors"
