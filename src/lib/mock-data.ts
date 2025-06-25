@@ -271,6 +271,24 @@ export const mockEntrepreneurs: EntrepreneurDataType = [
     avatar:
       "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150&h=150&fit=crop&crop=faces",
   },
+  {
+    id: 16,
+    name: "Ethan Lee",
+    email: "ethan@mobilitynext.com",
+    phone: "+1-555-0116",
+    startupName: "MobilityNext",
+    bio: "Transportation engineer building the next generation of urban mobility solutions.",
+    startupDescription:
+      "Electric scooter sharing platform with AI-powered fleet management for cities.",
+    fundingNeed: "$3.2M",
+    industry: "Mobility",
+    location: "Dallas, TX",
+    website: "www.mobilitynext.com",
+    foundedYear: 2022,
+    teamSize: 13,
+    avatar:
+      "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?w=150&h=150&fit=crop&crop=faces",
+  }
 ];
 
 export const mockInvestors: InvestorDataType = [
@@ -549,6 +567,23 @@ export const mockInvestors: InvestorDataType = [
     avatar:
       "https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?w=150&h=150&fit=crop&crop=faces",
   },
+  {
+    id: 16,
+    name: "Olivia Carter",
+    email: "olivia@climatetechfund.com",
+    phone: "+1-555-1016",
+    bio: "Climate tech investor passionate about supporting startups tackling global environmental challenges.",
+    investmentInterests: ["ClimateTech", "Carbon Capture", "Clean Energy", "Sustainable Materials"],
+    portfolioCompanies: ["EcoCapture", "GreenMaterials", "SolarFuture", "CleanGrid"],
+    investmentRange: "$1M - $18M",
+    location: "San Francisco, CA",
+    firm: "ClimateTech Fund",
+    website: "www.climatetechfund.com",
+    yearsExperience: 13,
+    totalInvestments: 36,
+    avatar:
+      "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?w=150&h=150&fit=crop&crop=faces",
+  },
 ];
 
 export const mockCollaborationRequests: CollaborationRequestDataType = [
@@ -578,4 +613,12 @@ export const mockCollaborationRequests: CollaborationRequestDataType = [
       "Very impressed with your green technology approach. Let's discuss partnership opportunities.",
     createdAt: "2025-06-13T09:15:00Z",
   },
+  {
+    id: 24,
+    investorId: 2,
+    entrepreneurId: 5,
+    status: "rejected",
+    message: "Thank you for reaching out. At this time, our focus is on earlier-stage food tech startups.",
+    createdAt: "2025-06-12T16:45:00Z",
+  }
 ];
