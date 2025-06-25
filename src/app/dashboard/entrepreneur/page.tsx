@@ -19,7 +19,7 @@ const Page = () => {
         </div>
 
         <List
-          className="mb-9 grid grid-cols-1 gap-6 md:grid-cols-2"
+          className="mb-9 relative-grid"
           items={mockCollaborationRequests}
           renderItem={(collaborationRequest) => (
             <CollaborationRequestCard
@@ -39,7 +39,7 @@ const Page = () => {
         </div>
 
         <List
-          className="grid grid-cols-1 gap-6 md:grid-cols-2"
+          className="relative-grid"
           items={mockEntrepreneurs}
           renderItem={(entrepreneur) => (
             <EntrepreneurCard key={entrepreneur.id} entrepreneur={entrepreneur} />
