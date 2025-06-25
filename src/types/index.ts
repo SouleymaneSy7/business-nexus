@@ -149,3 +149,7 @@ export type SidebarUserPropsType = {
     avatar: string;
   };
 };
+
+export type DateFormatPropsType = {
+  dateString: string;
+};
