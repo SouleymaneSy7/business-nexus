@@ -26,7 +26,7 @@ export default function Custom404() {
           </Title>
 
           <p className="text-muted-foreground mt-6 text-lg font-medium text-pretty sm:text-xl/8">
-            Sorry, we couldn `&apos;`t find the page you `&apos;`re looking for.
+            Sorry, we couldn &apos;t find the page you &apos;re looking for.
           </p>
 
           <div className="mt-10 flex items-center justify-center gap-x-6">

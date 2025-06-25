@@ -21,7 +21,7 @@ const Page = () => {
           </Title>
 
           <p className="text-muted-foreground">
-            Unlock tailored investment opportunities designed to accelerate your company `&apos;`s
+            Unlock tailored investment opportunities designed to accelerate your company &apos;s
             growth and diversification.
           </p>
         </div>
