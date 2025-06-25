@@ -1,34 +1,16 @@
 "use client";
 
-import { mockCollaborationRequests, mockEntrepreneurs } from "@/lib/mock-data";
+import { mockEntrepreneurs } from "@/lib/mock-data";
 
 import List from "@components/common/List";
 import Title from "@components/common/Title";
 import DashboardLayout from "@/components/dashboard/DashboardLayout";
 import EntrepreneurCard from "@components/dashboard/EntrepreneurCard";
-import CollaborationRequestCard from "@components/dashboard/CollaborationRequestCard";
 
 const Page = () => {
   return (
     <DashboardLayout>
       <div className="mx-auto max-w-7xl p-6">
-        <div className="mb-6">
-          <Title level="h2" className="text-card-foreground mb-2 text-3xl font-bold">
-            Collaboration Requests
-          </Title>
-        </div>
-
-        <List
-          className="mb-9 relative-grid"
-          items={mockCollaborationRequests}
-          renderItem={(collaborationRequest) => (
-            <CollaborationRequestCard
-              key={collaborationRequest.id}
-              userRequests={collaborationRequest}
-            />
-          )}
-        />
-
         <div className="mb-6">
           <Title level="h3" ariaLevel={3} className="text-card-foreground mb-2 text-3xl font-bold">
             Discover Entrepreneurs
@@ -39,6 +21,7 @@ const Page = () => {
         </div>
 
         <List
+          as={"div"}
           className="relative-grid"
           items={mockEntrepreneurs}
           renderItem={(entrepreneur) => (
