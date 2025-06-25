@@ -76,6 +76,16 @@ Step-by-step instructions (with screenshots planned) will be provided for common
 
 ---
 
+## Performance
+
+- Lighthouse Score:
+  - Performance: 95/100
+  - Accessibility: 100/100
+  - Best Practices: 100/100
+  - SEO: 100/100
+
+![Lighthouse Preview](./public/preview/lighthouse-preview.jpg)
+
 ## Project Structure
 
 ```md
