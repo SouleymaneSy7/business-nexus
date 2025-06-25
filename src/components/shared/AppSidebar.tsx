@@ -21,10 +21,10 @@ import Title from "@components/common/Title";
 import SidebarUser from "./SidebarUser";
 import { ThemeToggle } from "./ThemeToggle";
 import Container from "@components/common/Container";
-import { useRouter } from "next/router";
+import { usePathname } from "next/navigation";
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
-  const router = useRouter();
+  const pathname = usePathname()
 
   const user = {
     name: "Souleymane",
@@ -69,7 +69,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                     <SidebarMenuItem key={item.title}>
                       <SidebarMenuButton
                         asChild
-                        isActive={router.pathname === item.url ? true : false}
+                        isActive={pathname === item.url ? true : false}
                       >
                         <Link href={item.url} title={item.title}>
                           <item.icon />
