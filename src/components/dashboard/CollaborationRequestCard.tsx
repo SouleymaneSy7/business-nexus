@@ -69,7 +69,7 @@ const CollaborationRequestCard: React.FC<CollaborationRequestPropsType> = ({ use
         {userRequests.message}
       </CardDescription>
 
-      <CardFooter className="flex items-center justify-between p-0 flex-wrap lg:flex-nowrap">
+      <CardFooter className="flex items-center justify-between gap-3 p-0 flex-wrap lg:flex-nowrap">
         <div className="flex flex-wrap items-start gap-2 lg:flex-nowrap">
           <span className="text-card-foreground font-medium">Requested on:</span>
           <span>
