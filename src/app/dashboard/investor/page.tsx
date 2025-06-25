@@ -23,7 +23,7 @@ const Page = () => {
         </div>
 
         <div className="mb-6">
-          <Title level="h2" className="text-card-foreground mb-2 text-3xl font-bold">
+          <Title level="h2" className="text-card-foreground mb-2 text-2xl font-bold">
             Collaboration Requests
           </Title>
         </div>
@@ -44,7 +44,7 @@ const Page = () => {
           <Title
             level="h2"
             ariaLevel={2}
-            className="text-card-foreground mb-4 text-xl font-semibold"
+            className="text-card-foreground mb-4 text-2xl font-semibold"
           >
             Discover Investors
           </Title>
