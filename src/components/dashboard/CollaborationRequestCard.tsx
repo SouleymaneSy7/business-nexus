@@ -69,10 +69,10 @@ const CollaborationRequestCard: React.FC<CollaborationRequestPropsType> = ({ use
         {userRequests.message}
       </CardDescription>
 
-      <CardFooter className="flex items-center justify-between p-0">
+      <CardFooter className="flex items-center justify-between p-0 flex-wrap lg:flex-nowrap">
         <div className="flex flex-wrap items-start gap-2 lg:flex-nowrap">
-          <span className="text-card-foreground text-xs">Requested on:</span>
-          <span className="font-medium">
+          <span className="text-card-foreground font-medium">Requested on:</span>
+          <span>
             <DateFormat dateString={userRequests.createdAt} />
           </span>
         </div>
