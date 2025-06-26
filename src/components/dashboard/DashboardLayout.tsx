@@ -2,7 +2,7 @@ import * as React from "react";
 
 import { DashboardLayoutPropsType } from "@/types";
 import { AppSidebar } from "@components/shared/AppSidebar";
-import { SidebarInset, SidebarProvider, SidebarTrigger } from "@components/ui/sidebar";
+import { SidebarProvider, SidebarTrigger } from "@components/ui/sidebar";
 
 import Container from "@components/common/Container";
 
@@ -12,12 +12,12 @@ const DashboardLayout: React.FC<DashboardLayoutPropsType> = ({ children }) => {
       <SidebarProvider>
         <AppSidebar />
 
-        <SidebarInset>
+        <div>
           <Container className="max-w-7xl p-6">
             <SidebarTrigger />
           </Container>
-          <main>{children}</main>
-        </SidebarInset>
+          <main role="main">{children}</main>
+        </div>
       </SidebarProvider>
     </React.Fragment>
   );
