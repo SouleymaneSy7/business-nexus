@@ -62,7 +62,6 @@ const RegisterForm = () => {
   const emailId = `${id}-email`;
   const passwordId = `${id}-password`;
   const confirmPasswordId = `${id}-confirm-password`;
-  const roleId = `${id}-role`;
   const companyId = `${id}-company`;
   const bioId = `${id}-bio`;
   const termsId = `${id}-terms`;
@@ -146,15 +145,15 @@ const RegisterForm = () => {
               )}
             </div>
 
-            <div className="item-center flex w-full gap-4 flex-wrap lg:flex-nowrap">
+            <div className="item-center flex w-full flex-wrap gap-4 lg:flex-nowrap">
               <div className="w-1/2 space-y-2">
-                <Label htmlFor={roleId}>I am a</Label>
+                <Label>I am a</Label>
 
                 <Select
                   onValueChange={(value) => setValue("role", value as "investor" | "entrepreneur")}
                 >
                   <SelectTrigger>
-                    <SelectValue placeholder="Select your role" id={roleId} />
+                    <SelectValue placeholder="Select your role" />
                   </SelectTrigger>
                   <SelectContent>
                     <SelectItem value="entrepreneur">Entrepreneur</SelectItem>
