@@ -15,7 +15,7 @@ const DashboardLayout: React.FC<DashboardLayoutPropsType> = ({ children }) => {
         <AppSidebar />
 
         <SidebarInset>
-          <Container className="max-w-7xl p-6 mx-auto">
+          <Container className="max-w-7xl p-6">
             <SidebarTrigger />
           </Container>
           <main role="main">{children}</main>
