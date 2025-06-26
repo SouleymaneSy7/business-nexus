@@ -2,7 +2,7 @@ import * as React from "react";
 
 import { DashboardLayoutPropsType } from "@/types";
 import { AppSidebar } from "@components/shared/AppSidebar";
-import { SidebarProvider, SidebarTrigger } from "@components/ui/sidebar";
+import { SidebarInset, SidebarProvider, SidebarTrigger } from "@components/ui/sidebar";
 
 import Container from "@components/common/Container";
 
@@ -12,8 +12,8 @@ const DashboardLayout: React.FC<DashboardLayoutPropsType> = ({ children }) => {
       <SidebarProvider>
         <AppSidebar />
 
-        <div>
-          <Container className="max-w-7xl p-6">
+        <div className="flex flex-col min-h-screen w-full">
+          <Container className="max-w-7xl p-6 mx-auto">
             <SidebarTrigger />
           </Container>
           <main role="main">{children}</main>
