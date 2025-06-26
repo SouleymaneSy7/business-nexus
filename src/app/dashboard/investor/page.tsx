@@ -36,10 +36,13 @@ const Page = () => {
           </Title>
 
           <List
-            as={"section"}
             className="relative-grid"
             items={mockInvestors}
-            renderItem={(investor) => <InvestorCard key={investor.id} investor={investor} />}
+            renderItem={(investor) => (
+              <li key={investor.id}>
+                <InvestorCard investor={investor} />
+              </li>
+            )}
           />
         </div>
       </div>

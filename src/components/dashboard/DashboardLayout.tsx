@@ -6,8 +6,6 @@ import { SidebarInset, SidebarProvider, SidebarTrigger } from "@components/ui/si
 
 import Container from "@components/common/Container";
 
-
-
 const DashboardLayout: React.FC<DashboardLayoutPropsType> = ({ children }) => {
   return (
     <React.Fragment>

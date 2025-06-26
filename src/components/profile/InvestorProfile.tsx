@@ -127,13 +127,14 @@ const InvestorProfile: React.FC<InvestorProfilePropsType> = ({ investor }) => (
               </Title>
 
               <List
-                as={"div"}
                 className="grid grid-cols-2 gap-4"
                 items={investor.portfolioCompanies}
                 renderItem={(item) => (
-                  <div key={item} className="bg-secondary rounded-lg p-4 text-center">
-                    <div className="text-secondary-foreground text-sm font-medium">{item}</div>
-                  </div>
+                  <li key={item}>
+                    <div className="bg-secondary rounded-lg p-4 text-center">
+                      <div className="text-secondary-foreground text-sm font-medium">{item}</div>
+                    </div>
+                  </li>
                 )}
               />
             </div>

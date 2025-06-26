@@ -24,7 +24,7 @@ import Container from "@components/common/Container";
 import { usePathname } from "next/navigation";
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
-  const pathname = usePathname()
+  const pathname = usePathname();
 
   const user = {
     name: "Souleymane",
@@ -47,7 +47,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   ];
 
   return (
-    <Sidebar variant="floating" {...props}>
+    <Sidebar variant="inset" {...props}>
       <SidebarHeader>
         <SidebarMenuButton size="lg" asChild variant={"default"}>
           <Link href="/">
@@ -66,17 +66,16 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                 items={navItems}
                 renderItem={(item) => {
                   return (
-                    <SidebarMenuItem key={item.title}>
-                      <SidebarMenuButton
-                        asChild
-                        isActive={pathname === item.url ? true : false}
-                      >
-                        <Link href={item.url} title={item.title}>
-                          <item.icon />
-                          <span>{item.title}</span>
-                        </Link>
-                      </SidebarMenuButton>
-                    </SidebarMenuItem>
+                    <li key={item.title}>
+                      <SidebarMenuItem>
+                        <SidebarMenuButton asChild isActive={pathname === item.url ? true : false}>
+                          <Link href={item.url} title={item.title}>
+                            <item.icon />
+                            <span>{item.title}</span>
+                          </Link>
+                        </SidebarMenuButton>
+                      </SidebarMenuItem>
+                    </li>
                   );
                 }}
               />

@@ -20,7 +20,7 @@ const Page = () => {
           >
             Welcome to Your Entrepreneur Dashboard
           </Title>
-          
+
           <p className="text-muted-foreground mb-4">
             Track collaboration requests and discover new entrepreneurs to connect and grow your
             business.
@@ -38,14 +38,12 @@ const Page = () => {
         </div>
 
         <List
-          as={"section"}
           className="relative-grid mb-9"
           items={mockCollaborationRequests}
           renderItem={(collaborationRequest) => (
-            <CollaborationRequestCard
-              key={collaborationRequest.id}
-              userRequests={collaborationRequest}
-            />
+            <li key={collaborationRequest.id}>
+              <CollaborationRequestCard userRequests={collaborationRequest} />
+            </li>
           )}
         />
 
@@ -60,11 +58,12 @@ const Page = () => {
         </div>
 
         <List
-          as={"div"}
           className="relative-grid"
           items={mockEntrepreneurs}
           renderItem={(entrepreneur) => (
-            <EntrepreneurCard key={entrepreneur.id} entrepreneur={entrepreneur} />
+            <li key={entrepreneur.id}>
+              <EntrepreneurCard entrepreneur={entrepreneur} />
+            </li>
           )}
         />
       </div>
